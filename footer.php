@@ -10,7 +10,7 @@
           <?php if ( has_custom_logo() ) :
               the_custom_logo();
           else : ?>
-            <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/logo.svg' ); ?>"
+            <img src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69aa39e7618c8d4bca1229d0.png"
                  alt="<?php esc_attr_e( 'Fissure et Drain XT', 'fissuredrainxt' ); ?>"
                  width="140" height="44" loading="lazy">
           <?php endif; ?>
@@ -53,31 +53,31 @@
         <div class="ftch"><?php esc_html_e( 'Contact', 'fissuredrainxt' ); ?></div>
         <div class="ftcontact">
           <div class="ftci">
-            <div class="ftciic">📞</div>
+            <div class="ftciic"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--y)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.01 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
             <div>
-              <div style="color:rgba(255,255,255,.25);font-size:10px;font-family:var(--fd);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px"><?php esc_html_e( 'Téléphone', 'fissuredrainxt' ); ?></div>
+              <div style="color:rgba(255,255,255,.55);font-size:10px;font-family:var(--fd);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px"><?php esc_html_e( 'Téléphone', 'fissuredrainxt' ); ?></div>
               <a href="tel:15147307107" style="color:var(--y);font-family:var(--fd);font-size:16px;font-weight:800">(514) 730-7107</a>
             </div>
           </div>
           <div class="ftci">
-            <div class="ftciic">🌐</div>
+            <div class="ftciic"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--y)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
             <div>
-              <div style="color:rgba(255,255,255,.25);font-size:10px;font-family:var(--fd);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px"><?php esc_html_e( 'Site web', 'fissuredrainxt' ); ?></div>
+              <div style="color:rgba(255,255,255,.55);font-size:10px;font-family:var(--fd);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px"><?php esc_html_e( 'Site web', 'fissuredrainxt' ); ?></div>
               fissuredrainxt.com
             </div>
           </div>
           <div class="ftci">
-            <div class="ftciic">📍</div>
+            <div class="ftciic"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--y)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
             <div>
-              <div style="color:rgba(255,255,255,.25);font-size:10px;font-family:var(--fd);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px"><?php esc_html_e( 'Territoire', 'fissuredrainxt' ); ?></div>
+              <div style="color:rgba(255,255,255,.55);font-size:10px;font-family:var(--fd);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px"><?php esc_html_e( 'Territoire', 'fissuredrainxt' ); ?></div>
               <?php esc_html_e( 'Montréal · Laval · Rive-Nord', 'fissuredrainxt' ); ?><br>
               <?php esc_html_e( 'Laurentides · Lanaudière', 'fissuredrainxt' ); ?>
             </div>
           </div>
           <div class="ftci">
-            <div class="ftciic">⏰</div>
+            <div class="ftciic"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--y)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
             <div>
-              <div style="color:rgba(255,255,255,.25);font-size:10px;font-family:var(--fd);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px"><?php esc_html_e( 'Heures', 'fissuredrainxt' ); ?></div>
+              <div style="color:rgba(255,255,255,.55);font-size:10px;font-family:var(--fd);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px"><?php esc_html_e( 'Heures', 'fissuredrainxt' ); ?></div>
               <?php esc_html_e( 'Lun–Ven : 7h–18h · Sam : 8h–16h', 'fissuredrainxt' ); ?>
             </div>
           </div>

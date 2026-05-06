@@ -20,7 +20,7 @@
       <?php if ( has_custom_logo() ) :
           the_custom_logo();
       else : ?>
-        <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/logo.svg' ); ?>"
+        <img src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69aa39e7618c8d4bca1229d0.png"
              alt="<?php esc_attr_e( 'Fissure et Drain XT', 'fissuredrainxt' ); ?>"
              width="160" height="44"
              loading="eager">
