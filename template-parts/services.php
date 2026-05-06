@@ -12,9 +12,9 @@
 
       <!-- Service 1 -->
       <div class="vcard">
-        <div class="vcard-photo" style="background:linear-gradient(135deg,#1A1A1A 0%,#2A2A2A 100%);display:flex;align-items:center;justify-content:center;font-size:64px">
-          🚰
-          <span class="vcard-photo-tag">🚰 <?php esc_html_e( 'Drain français', 'fissuredrainxt' ); ?></span>
+        <div class="vcard-photo">
+          <img src="https://fissuredrainxt.com/wp-content/uploads/2026/05/Installation-reparation-de-drain-francais-.jpeg" alt="<?php esc_attr_e( 'Installation et réparation de drain français', 'fissuredrainxt' ); ?>">
+          <span class="vcard-photo-tag"><?php esc_html_e( 'À partir 160 $/pi.lin.', 'fissuredrainxt' ); ?></span>
         </div>
         <span class="vnum">01</span>
         <h3 class="vt"><?php esc_html_e( 'Installation & réparation de drain français', 'fissuredrainxt' ); ?></h3>
@@ -31,9 +31,8 @@
 
       <!-- Service 2 -->
       <div class="vcard">
-        <div class="vcard-photo" style="background:linear-gradient(135deg,#222222 0%,#1A2A1A 100%);display:flex;align-items:center;justify-content:center;font-size:64px">
-          🧱
-          <span class="vcard-photo-tag">🧱 <?php esc_html_e( 'Imperméabilisation', 'fissuredrainxt' ); ?></span>
+        <div class="vcard-photo">
+          <img src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69cd604e65dd94041a48fe92.jpg" alt="<?php esc_attr_e( 'Imperméabilisation de fondation', 'fissuredrainxt' ); ?>">
         </div>
         <span class="vnum">02</span>
         <h3 class="vt"><?php esc_html_e( 'Imperméabilisation de fondation', 'fissuredrainxt' ); ?></h3>
@@ -50,9 +49,8 @@
 
       <!-- Service 3 -->
       <div class="vcard">
-        <div class="vcard-photo" style="background:linear-gradient(135deg,#2A2A2A 0%,#3A2A1A 100%);display:flex;align-items:center;justify-content:center;font-size:64px">
-          ⚡
-          <span class="vcard-photo-tag">⚡ <?php esc_html_e( 'Réparation fissure', 'fissuredrainxt' ); ?></span>
+        <div class="vcard-photo">
+          <img src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69cd604e176107c821ee5587.png" alt="<?php esc_attr_e( 'Réparation de fissures de fondation', 'fissuredrainxt' ); ?>">
         </div>
         <span class="vnum">03</span>
         <h3 class="vt"><?php esc_html_e( 'Réparation de fissures de fondation', 'fissuredrainxt' ); ?></h3>
@@ -69,9 +67,8 @@
 
       <!-- Service 4 -->
       <div class="vcard">
-        <div class="vcard-photo" style="background:linear-gradient(135deg,#1A1A2A 0%,#2A2A3A 100%);display:flex;align-items:center;justify-content:center;font-size:64px">
-          📷
-          <span class="vcard-photo-tag">📷 <?php esc_html_e( 'Inspection caméra', 'fissuredrainxt' ); ?></span>
+        <div class="vcard-photo">
+          <img src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69cd5f090f0dab5b9ded3c07.png" alt="<?php esc_attr_e( 'Inspection par caméra', 'fissuredrainxt' ); ?>">
         </div>
         <span class="vnum">04</span>
         <h3 class="vt"><?php esc_html_e( 'Inspection par caméra', 'fissuredrainxt' ); ?></h3>
