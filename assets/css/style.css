@@ -334,6 +334,38 @@ footer{background:var(--dk2);border-top:4px solid var(--y);padding:56px 32px 28p
 .ftl2 a:hover{color:var(--y)}
 .ftrb{font-family:var(--fd);font-size:13px;font-weight:700;letter-spacing:.06em;color:rgba(255,255,255,.6)}
 
+/* ── PAGE SOUMISSION ── */
+.psec-hero{background:var(--dk);padding:110px 32px 80px;border-bottom:3px solid var(--y)}
+.psec-hero-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.psec-h1{font-family:var(--fd);font-size:clamp(36px,5vw,60px);font-weight:900;text-transform:uppercase;color:var(--w);line-height:1.05;letter-spacing:-.01em;margin:12px 0 20px}
+.psec-sub{font-size:15px;color:rgba(255,255,255,.65);line-height:1.75;margin-bottom:36px;font-weight:300}
+.psec-perks{list-style:none;display:flex;flex-direction:column;gap:18px;margin-bottom:32px}
+.psec-perks li{display:flex;align-items:flex-start;gap:14px}
+.psec-pico{width:32px;height:32px;background:rgba(245,168,0,.12);border:1px solid rgba(245,168,0,.3);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--y)}
+.psec-perks li strong{display:block;font-family:var(--fd);font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--w);margin-bottom:2px}
+.psec-perks li span{font-size:13px;color:rgba(255,255,255,.55);line-height:1.5}
+.psec-trust{display:flex;flex-wrap:wrap;gap:10px}
+.psec-tbdg{display:inline-flex;align-items:center;gap:7px;font-family:var(--fd);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.7);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:7px 12px;border-radius:4px}
+.psec-form-wrap{background:var(--dk3);border:1px solid rgba(255,255,255,.08);border-radius:6px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.psec-form-head{display:flex;align-items:center;gap:10px;padding:16px 22px;background:rgba(245,168,0,.08);border-bottom:1px solid rgba(245,168,0,.15);font-family:var(--fd);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--y)}
+.psec-form-dot{width:8px;height:8px;background:var(--y);border-radius:50%;animation:pulse 2s infinite}
+.psec-form-body{padding:0}
+.psec-cta{background:var(--y);padding:60px 32px}
+.psec-cta-inner{max-width:var(--max-w);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.psec-cta-h{font-family:var(--fd);font-size:clamp(26px,3vw,38px);font-weight:900;text-transform:uppercase;color:var(--dk);line-height:1.1;letter-spacing:-.01em}
+.psec-cta-sub{font-size:14px;color:rgba(26,26,26,.7);margin-top:8px;font-weight:300}
+.psec-cta-btns{display:flex;gap:14px;flex-wrap:wrap;flex-shrink:0}
+.psec-cta-btn-primary{background:var(--dk);color:var(--w);font-family:var(--fd);font-size:14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:16px 30px;border-radius:4px;display:inline-block;transition:.2s;white-space:nowrap}
+.psec-cta-btn-primary:hover{background:var(--dk2);transform:translateY(-1px)}
+.psec-cta-btn-secondary{display:inline-flex;align-items:center;gap:8px;background:transparent;border:2px solid var(--dk);color:var(--dk);font-family:var(--fd);font-size:14px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:14px 24px;border-radius:4px;transition:.2s;white-space:nowrap}
+.psec-cta-btn-secondary:hover{background:rgba(26,26,26,.1)}
+@media(max-width:900px){
+  .psec-hero-inner{grid-template-columns:1fr}
+  .psec-hero{padding:100px 20px 60px}
+  .psec-cta-inner{flex-direction:column;text-align:center}
+  .psec-cta-btns{justify-content:center}
+}
+
 /* ── GUARANTEE CLAUSE ── */
 .clause-sec{background:#030810;padding:20px 24px;text-align:center;border-top:1px solid rgba(255,255,255,.1)}
 .clause-in{max-width:var(--max-w);margin:0 auto;font-size:12px;color:rgba(255,255,255,.55);line-height:1.8;font-weight:300}
