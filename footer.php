@@ -60,13 +60,6 @@
             </div>
           </div>
           <div class="ftci">
-            <div class="ftciic"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--y)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
-            <div>
-              <div style="color:rgba(255,255,255,.55);font-size:10px;font-family:var(--fd);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px"><?php esc_html_e( 'Site web', 'fissuredrainxt' ); ?></div>
-              fissuredrainxt.com
-            </div>
-          </div>
-          <div class="ftci">
             <div class="ftciic"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--y)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
             <div>
               <div style="color:rgba(255,255,255,.55);font-size:10px;font-family:var(--fd);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px"><?php esc_html_e( 'Territoire', 'fissuredrainxt' ); ?></div>
