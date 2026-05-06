@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 function fdxt_enqueue_assets() {
 
     $uri = get_template_directory_uri();
-    $v   = '2.4.0'; // bump to force cache refresh
+    $v   = '2.5.0'; // bump to force cache refresh
 
     // ── Fonts (preconnect + stylesheet) ──────────────────────────────────
     // DNS prefetch
@@ -29,16 +29,34 @@ function fdxt_enqueue_assets() {
         $v
     );
 
+    // ── GSAP + ScrollTrigger (CDN — free, ~25 KB gzipped) ─────────────────
+    wp_register_script(
+        'gsap',
+        'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js',
+        array(),
+        null,
+        true
+    );
+    wp_register_script(
+        'gsap-st',
+        'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js',
+        array( 'gsap' ),
+        null,
+        true
+    );
+    wp_enqueue_script( 'gsap' );
+    wp_enqueue_script( 'gsap-st' );
+
     // ── Main script (footer, deferred) ────────────────────────────────────
     wp_enqueue_script(
         'fdxt-main',
         $uri . '/assets/js/main.js',
-        array(),
+        array( 'gsap-st' ), // loads after GSAP
         $v,
         true // load in footer
     );
 
-    // Add defer attribute to main script
+    // Add defer attribute to main script + GSAP
     add_filter( 'script_loader_tag', 'fdxt_defer_script', 10, 2 );
 }
 add_action( 'wp_enqueue_scripts', 'fdxt_enqueue_assets' );
@@ -51,7 +69,7 @@ add_action( 'wp_enqueue_scripts', 'fdxt_enqueue_assets' );
  * @return string
  */
 function fdxt_defer_script( $tag, $handle ) {
-    if ( 'fdxt-main' !== $handle ) {
+    if ( ! in_array( $handle, array( 'gsap', 'gsap-st', 'fdxt-main' ), true ) ) {
         return $tag;
     }
     return str_replace( ' src=', ' defer src=', $tag );

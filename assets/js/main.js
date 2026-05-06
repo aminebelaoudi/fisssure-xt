@@ -140,45 +140,20 @@ function lmSub() {
   }, { passive: true });
 })();
 
-/* ── PREMIUM ANIMATIONS v2.4 ── */
-(function() {
+/* ── ANIMATIONS v3.0 — GSAP + ScrollTrigger ── */
+(function () {
+  'use strict';
+
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ── 1. SCROLL PROGRESS BAR ── */
-  var prog = document.createElement('div');
-  prog.className = 'fd-prog';
-  document.body.appendChild(prog);
-
-  /* ── 2. PARALLAX + rAF SCROLL LOOP ── */
-  var heroBg   = document.querySelector('.hero-photo-bg');
-  var lastSY   = 0;
-  var ticking  = false;
-
-  function onScroll() {
-    lastSY = window.scrollY;
-    if (!ticking) {
-      requestAnimationFrame(function() {
-        var total = document.body.scrollHeight - window.innerHeight;
-        if (total > 0) prog.style.width = (lastSY / total * 100) + '%';
-        if (heroBg && lastSY < window.innerHeight * 1.6) {
-          heroBg.style.transform = 'translate3d(0,' + (lastSY * 0.32) + 'px,0) scale(1.07)';
-        }
-        ticking = false;
-      });
-      ticking = true;
-    }
-  }
-
-  if (!reduced) window.addEventListener('scroll', onScroll, { passive: true });
-
-  /* ── 3. SPLIT TEXT UTILITY ── */
-  function splitWords(el, outerCls, innerCls) {
+  /* ── HELPERS ── */
+  function splitTextNodes(el, outerCls, innerCls) {
     if (!el) return;
     var nodes = Array.from(el.childNodes);
     el.innerHTML = '';
-    nodes.forEach(function(node) {
+    nodes.forEach(function (node) {
       if (node.nodeType !== 3) { el.appendChild(node.cloneNode(true)); return; }
-      node.textContent.split(/(\s+)/).forEach(function(part) {
+      node.textContent.split(/(\s+)/).forEach(function (part) {
         if (!part) return;
         if (/^\s+$/.test(part)) { el.appendChild(document.createTextNode('\u00a0')); return; }
         var outer = document.createElement('span'); outer.className = outerCls;
@@ -190,50 +165,217 @@ function lmSub() {
     });
   }
 
-  /* ── 4. HERO H1 — GSAP SplitText style ── */
+  /* ── SCROLL PROGRESS BAR (always, lightweight) ── */
   if (!reduced) {
-    var heroH1 = document.querySelector('.hero h1');
-    if (heroH1) {
-      splitWords(heroH1, 'ht-word', 'ht-inner');
-      heroH1.querySelectorAll('.ht-inner').forEach(function(w, i) {
-        setTimeout(function() { w.classList.add('ht-in'); }, 180 + i * 80);
+    var prog = document.createElement('div');
+    prog.className = 'fd-prog';
+    document.body.appendChild(prog);
+  }
+
+  /* ══════════════════════════════════════════════════
+     GSAP MODE — full premium
+  ══════════════════════════════════════════════════ */
+  if (!reduced && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.defaults({ ease: 'power3.out' });
+
+    /* 1 — Progress bar scrub */
+    if (prog) {
+      ScrollTrigger.create({
+        start: 'top top',
+        end: 'bottom bottom',
+        onUpdate: function (self) {
+          prog.style.width = (self.progress * 100) + '%';
+        }
       });
     }
-  }
 
-  /* ── 5. SECTION H2 SPLIT TEXT ── */
-  if (!reduced) {
-    document.querySelectorAll('.shead h2, .psec-h2').forEach(function(h) {
-      splitWords(h, 'sh-word', 'sh-inner');
+    /* 2 — Hero parallax (scrub, GPU only) */
+    var heroBg = document.querySelector('.hero-photo-bg');
+    if (heroBg) {
+      gsap.to(heroBg, {
+        yPercent: 22,
+        ease: 'none',
+        scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1 }
+      });
+    }
+
+    /* 3 — Hero H1 SplitText stagger */
+    var heroH1 = document.querySelector('.hero h1');
+    if (heroH1) {
+      splitTextNodes(heroH1, 'ht-word', 'ht-inner');
+      gsap.from(heroH1.querySelectorAll('.ht-inner'), {
+        yPercent: 110, skewY: 4, opacity: 0,
+        duration: 1.2, stagger: 0.075, delay: 0.2,
+        ease: 'power4.out'
+      });
+    }
+
+    /* 4 — Hero right panel slide-in */
+    var heroRight = document.querySelector('.hgrid > .hright-btns');
+    if (heroRight) {
+      gsap.from(heroRight, { opacity: 0, x: 55, duration: 1.1, delay: 0.4 });
+    }
+
+    /* 5 — Hero sub-elements (badge, desc, tel) */
+    gsap.utils.toArray('.hero .hbadge, .hero .hdesc, .hero .htel').forEach(function (el, i) {
+      gsap.from(el, { opacity: 0, y: 20, duration: 0.9, delay: 0.55 + i * 0.14 });
     });
+
+    /* 6 — Section H2 — word-by-word reveal */
+    document.querySelectorAll('.shead h2').forEach(function (h2) {
+      splitTextNodes(h2, 'sh-word', 'sh-inner');
+      gsap.from(h2.querySelectorAll('.sh-inner'), {
+        yPercent: 110, opacity: 0, duration: 0.8, stagger: 0.065,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: h2, start: 'top 90%' }
+      });
+    });
+
+    /* 7 — Section p / ssub under shead */
+    document.querySelectorAll('.shead > p, .shead > .ssub').forEach(function (p) {
+      gsap.from(p, {
+        opacity: 0, y: 18, duration: 0.7,
+        scrollTrigger: { trigger: p, start: 'top 92%' }
+      });
+    });
+
+    /* 8 — Stats counters */
+    document.querySelectorAll('.sband .sn').forEach(function (el) {
+      var target = parseInt(el.textContent, 10);
+      if (isNaN(target)) return;
+      var obj = { val: 0 };
+      el.textContent = '0';
+      gsap.to(obj, {
+        val: target, duration: 2.2, ease: 'power2.out',
+        scrollTrigger: { trigger: el, start: 'top 90%' },
+        onUpdate: function () { el.textContent = Math.round(obj.val); },
+        onComplete: function () { el.textContent = target; }
+      });
+    });
+
+    /* 9 — Card grid stagger reveals */
+    ['.pgrid > .pcard', '.vgrid > .vcard', '.prgrid > .prcard', '.tmgrid > .tmcard'].forEach(function (sel) {
+      var cards = gsap.utils.toArray(sel);
+      if (!cards.length) return;
+      gsap.from(cards, {
+        opacity: 0, y: 65, scale: 0.95, duration: 0.85, stagger: 0.1,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: cards[0].parentElement, start: 'top 86%' }
+      });
+    });
+
+    /* 10 — Chips, perks, FAQ stagger */
+    var itemDefs = [
+      ['.zchips > .zchip',   -28, 0  ],
+      ['.psec-perks > li',   -24, 0  ],
+      ['.fwrap > .fitem',      0, 35 ],
+      ['.psec-trust > .psec-tbdg', 0, 30]
+    ];
+    itemDefs.forEach(function (def) {
+      var items = gsap.utils.toArray(def[0]);
+      if (!items.length) return;
+      gsap.from(items, {
+        opacity: 0, x: def[1], y: def[2], duration: 0.65, stagger: 0.07,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: items[0].parentElement, start: 'top 87%' }
+      });
+    });
+
+    /* 11 — Two-column directional reveals */
+    gsap.utils.toArray('.gleft, .linner > .lleft, .psec-hero-inner > .psec-left').forEach(function (el) {
+      gsap.from(el, {
+        opacity: 0, x: -65, duration: 1.05,
+        scrollTrigger: { trigger: el, start: 'top 85%' }
+      });
+    });
+    gsap.utils.toArray('.gright, .linner > .lw, .psec-hero-inner > .psec-form-wrap').forEach(function (el) {
+      gsap.from(el, {
+        opacity: 0, x: 65, duration: 1.05,
+        scrollTrigger: { trigger: el, start: 'top 85%' }
+      });
+    });
+
+    /* 12 — Trust certif band */
+    gsap.from('.cband', {
+      opacity: 0, y: 28, duration: 0.9,
+      scrollTrigger: { trigger: '.cband', start: 'top 90%' }
+    });
+
+    /* 13 — ustrip alert bar */
+    gsap.from('.ustrip', {
+      opacity: 0, y: -20, duration: 0.7, delay: 0.1
+    });
+
+    /* 14 — Footer columns */
+    var ftCols = gsap.utils.toArray('.ftgrid > div');
+    if (ftCols.length) {
+      gsap.from(ftCols, {
+        opacity: 0, y: 35, duration: 0.8, stagger: 0.1,
+        scrollTrigger: { trigger: '.ftgrid', start: 'top 95%' }
+      });
+    }
+
+    /* 15 — Card 3D tilt (desktop only) */
+    if (window.innerWidth > 900) {
+      gsap.utils.toArray('.pcard, .vcard, .prcard').forEach(function (card) {
+        card.addEventListener('mousemove', function (e) {
+          var r = card.getBoundingClientRect();
+          var dx = ((e.clientX - r.left) / r.width  - 0.5) * 12;
+          var dy = ((e.clientY - r.top)  / r.height - 0.5) * 12;
+          gsap.to(card, {
+            rotateX: -dy, rotateY: dx, scale: 1.03,
+            transformPerspective: 900, duration: 0.3, ease: 'power2.out'
+          });
+        });
+        card.addEventListener('mouseleave', function () {
+          gsap.to(card, { rotateX: 0, rotateY: 0, scale: 1, duration: 0.6, ease: 'power3.out' });
+        });
+      });
+    }
+
+    /* 16 — Magnetic buttons (desktop only) */
+    if (window.innerWidth > 900) {
+      gsap.utils.toArray('.nbtn, .hright-btn-primary, .sqt').forEach(function (btn) {
+        btn.addEventListener('mousemove', function (e) {
+          var r = btn.getBoundingClientRect();
+          var dx = (e.clientX - (r.left + r.width  / 2)) * 0.28;
+          var dy = (e.clientY - (r.top  + r.height / 2)) * 0.28;
+          gsap.to(btn, { x: dx, y: dy - 2, duration: 0.35, ease: 'power2.out' });
+        });
+        btn.addEventListener('mouseleave', function () {
+          gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1, 0.4)' });
+        });
+      });
+    }
+
+    return; /* GSAP mode complete */
   }
 
-  /* ── 6. REVEAL CLASS ASSIGNMENT ── */
+  /* ══════════════════════════════════════════════════
+     FALLBACK — IntersectionObserver (no GSAP / reduced-motion)
+  ══════════════════════════════════════════════════ */
   var singles = [
     '.shead', '.hgrid > div:first-child', '.hgrid > .hright-btns',
     '.ustrip', '.cband', '.sband', '.zlayout', '.fwrap',
     '.linner > .lleft', '.linner > .lw',
     '.psec-hero-inner > .psec-left', '.psec-hero-inner > .psec-form-wrap'
   ];
-  singles.forEach(function(sel) {
-    document.querySelectorAll(sel).forEach(function(el) {
-      if (!el.classList.contains('reveal') && !el.classList.contains('reveal-left') && !el.classList.contains('reveal-right')) {
-        el.classList.add('reveal');
-      }
-    });
+  singles.forEach(function (sel) {
+    document.querySelectorAll(sel).forEach(function (el) { el.classList.add('reveal'); });
   });
 
-  /* Two-column directional reveals */
-  var twoCols = [
-    ['.gleft',                              'reveal-left'],
-    ['.gright',                             'reveal-right'],
-    ['.linner > .lleft',                    'reveal-left'],
-    ['.linner > .lw',                       'reveal-right'],
-    ['.psec-hero-inner > .psec-left',       'reveal-left'],
-    ['.psec-hero-inner > .psec-form-wrap',  'reveal-right']
+  var leftRight = [
+    ['.gleft',                             'reveal-left'],
+    ['.gright',                            'reveal-right'],
+    ['.linner > .lleft',                   'reveal-left'],
+    ['.linner > .lw',                      'reveal-right'],
+    ['.psec-hero-inner > .psec-left',      'reveal-left'],
+    ['.psec-hero-inner > .psec-form-wrap', 'reveal-right']
   ];
-  twoCols.forEach(function(pair) {
-    document.querySelectorAll(pair[0]).forEach(function(el) {
+  leftRight.forEach(function (pair) {
+    document.querySelectorAll(pair[0]).forEach(function (el) {
       el.classList.remove('reveal');
       el.classList.add(pair[1]);
     });
@@ -244,104 +386,27 @@ function lmSub() {
     '.zchips > .zchip', '.fwrap > .fitem', '.ftgrid > div',
     '.psec-perks > li', '.psec-trust > .psec-tbdg'
   ];
-  groups.forEach(function(sel) {
-    document.querySelectorAll(sel).forEach(function(el, idx) {
+  groups.forEach(function (sel) {
+    document.querySelectorAll(sel).forEach(function (el, idx) {
       el.classList.add('reveal');
       el.style.transitionDelay = (Math.min(idx, 10) * 75) + 'ms';
     });
   });
 
-  /* ── 7. COUNTER ANIMATION ── */
-  var counted = typeof WeakSet !== 'undefined' ? new WeakSet() : null;
-
-  function animCounter(el) {
-    if (counted && counted.has(el)) return;
-    if (counted) counted.add(el);
-    var target = parseInt(el.textContent, 10);
-    if (isNaN(target)) return;
-    var duration = 1500 + Math.min(target, 500);
-    var startTime = null;
-    function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
-    function step(ts) {
-      if (!startTime) startTime = ts;
-      var p = Math.min((ts - startTime) / duration, 1);
-      el.textContent = Math.round(easeOut(p) * target);
-      if (p < 1) requestAnimationFrame(step);
-      else el.textContent = target;
-    }
-    requestAnimationFrame(step);
-  }
-
-  /* ── 8. FALLBACK (no IntersectionObserver or reduced-motion) ── */
+  var all = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
   if (reduced || !('IntersectionObserver' in window)) {
-    document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(function(el) { el.classList.add('visible'); });
-    document.querySelectorAll('.sh-word .sh-inner').forEach(function(el) { el.classList.add('sh-in'); });
-    document.querySelectorAll('.sn').forEach(animCounter);
+    all.forEach(function (el) { el.classList.add('visible'); });
     return;
   }
 
-  /* ── 9. INTERSECTION OBSERVER ── */
-  var obs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
       if (!entry.isIntersecting) return;
-      var el = entry.target;
-      el.classList.add('visible');
-      obs.unobserve(el);
-      /* H2 words stagger */
-      el.querySelectorAll && el.querySelectorAll('.sh-word .sh-inner').forEach(function(w, i) {
-        setTimeout(function() { w.classList.add('sh-in'); }, i * 65);
-      });
-      /* Counters */
-      el.querySelectorAll && el.querySelectorAll('.sn').forEach(animCounter);
+      entry.target.classList.add('visible');
+      obs.unobserve(entry.target);
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' });
 
-  /* Dedicated counter observer on sband (it's already a reveal target) */
-  var sbObs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (!entry.isIntersecting) return;
-      entry.target.querySelectorAll('.sn').forEach(animCounter);
-      sbObs.unobserve(entry.target);
-    });
-  }, { threshold: 0.35 });
-  document.querySelectorAll('.sband').forEach(function(el) { sbObs.observe(el); });
+  all.forEach(function (el) { obs.observe(el); });
 
-  document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(function(el) { obs.observe(el); });
-
-  /* ── 10. CARD 3D TILT ── */
-  if (window.innerWidth > 900) {
-    document.querySelectorAll('.pcard,.vcard,.prcard').forEach(function(card) {
-      card.addEventListener('mousemove', function(e) {
-        var r   = card.getBoundingClientRect();
-        var dx  = ((e.clientX - r.left) / r.width  - 0.5) * 10;
-        var dy  = ((e.clientY - r.top)  / r.height - 0.5) * 10;
-        card.style.transform    = 'perspective(900px) rotateX(' + (-dy) + 'deg) rotateY(' + dx + 'deg) scale(1.025)';
-        card.style.boxShadow    = '0 24px 48px rgba(0,0,0,.38)';
-        card.style.zIndex       = '2';
-        card.style.transition   = 'transform .1s ease, box-shadow .1s ease';
-      });
-      card.addEventListener('mouseleave', function() {
-        card.style.transform    = '';
-        card.style.boxShadow    = '';
-        card.style.zIndex       = '';
-        card.style.transition   = '';
-      });
-    });
-  }
-
-  /* ── 11. MAGNETIC BUTTONS ── */
-  if (window.innerWidth > 900) {
-    document.querySelectorAll('.nbtn, .hright-btn-primary, .sqt').forEach(function(btn) {
-      btn.addEventListener('mousemove', function(e) {
-        var r  = btn.getBoundingClientRect();
-        var dx = (e.clientX - (r.left + r.width  / 2)) * 0.25;
-        var dy = (e.clientY - (r.top  + r.height / 2)) * 0.25;
-        btn.style.transform = 'translate(' + dx + 'px,' + dy + 'px) translateY(-2px)';
-      });
-      btn.addEventListener('mouseleave', function() {
-        btn.style.transform = '';
-      });
-    });
-  }
-
-})();
+}());
