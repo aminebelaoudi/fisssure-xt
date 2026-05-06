@@ -177,6 +177,9 @@ function lmSub() {
   ══════════════════════════════════════════════════ */
   if (!reduced && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
 
+    /* Signal CSS to neutralize all opacity:0 classes — GSAP owns the animations */
+    document.documentElement.classList.add('gsap-loaded');
+
     gsap.registerPlugin(ScrollTrigger);
     gsap.defaults({ ease: 'power3.out' });
 
@@ -205,11 +208,10 @@ function lmSub() {
     var heroH1 = document.querySelector('.hero h1');
     if (heroH1) {
       splitTextNodes(heroH1, 'ht-word', 'ht-inner');
-      gsap.from(heroH1.querySelectorAll('.ht-inner'), {
-        yPercent: 110, skewY: 4, opacity: 0,
-        duration: 1.2, stagger: 0.075, delay: 0.2,
-        ease: 'power4.out'
-      });
+      gsap.fromTo(heroH1.querySelectorAll('.ht-inner'),
+        { yPercent: 110, skewY: 4, opacity: 0 },
+        { yPercent: 0, skewY: 0, opacity: 1, duration: 1.2, stagger: 0.075, delay: 0.2, ease: 'power4.out' }
+      );
     }
 
     /* 4 — Hero right panel slide-in */
@@ -226,11 +228,11 @@ function lmSub() {
     /* 6 — Section H2 — word-by-word reveal */
     document.querySelectorAll('.shead h2').forEach(function (h2) {
       splitTextNodes(h2, 'sh-word', 'sh-inner');
-      gsap.from(h2.querySelectorAll('.sh-inner'), {
-        yPercent: 110, opacity: 0, duration: 0.8, stagger: 0.065,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: h2, start: 'top 90%' }
-      });
+      gsap.fromTo(h2.querySelectorAll('.sh-inner'),
+        { yPercent: 110, opacity: 0 },
+        { yPercent: 0, opacity: 1, duration: 0.8, stagger: 0.065, ease: 'power3.out',
+          scrollTrigger: { trigger: h2, start: 'top 90%' } }
+      );
     });
 
     /* 7 — Section p / ssub under shead */

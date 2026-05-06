@@ -105,6 +105,15 @@ sup.ast{font-size:8px;vertical-align:super;color:rgba(245,168,0,.75);font-weight
 .sh-inner{display:inline-block;transform:translateY(108%);opacity:0;transition:transform .75s cubic-bezier(.16,1,.3,1),opacity .5s ease}
 .sh-inner.sh-in{transform:none;opacity:1}
 
+/* ── WHEN GSAP IS ACTIVE: neutralize CSS opacity:0 so GSAP owns all animations ── */
+/* Without this, gsap.from({opacity:0}) reads the CSS opacity:0 as the tween target → stays invisible */
+html.gsap-loaded .ht-inner,
+html.gsap-loaded .sh-inner{opacity:1!important;transform:none!important;transition:none!important}
+html.gsap-loaded .reveal,
+html.gsap-loaded .reveal-left,
+html.gsap-loaded .reveal-right{opacity:1!important;transform:none!important;filter:none!important;transition:none!important}
+.sh-inner.sh-in{transform:none;opacity:1}
+
 /* ── COUNTER ── */
 .sn{display:inline-block;min-width:.5ch}
 
