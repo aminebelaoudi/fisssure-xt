@@ -427,6 +427,7 @@ body{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:2.25rem}
 .wp-site-blocks,.is-root-container{padding-top:0!important;padding-bottom:0!important;padding-left:0!important;padding-right:0!important;gap:0!important}
 /* WP adds margin/padding to p, ul, ol via classic-theme-styles; reset inside our sections */
 .sec p,.sec ul,.sec ol,.hero p,.hero ul,footer p,footer ul,.lsec p,.lsec ul{margin:0;padding:0}
+.tmtxt{padding-left:22px!important;margin-left:4px!important}
 /* Prevent WP from turning our ul into disc lists */
 .nl,.ftlinks,.lperks,.glist,.vlist,.ftcerts,.cinner,.zchips{list-style:none!important}
 /* Ensure WP body_class paddings don't interfere */
