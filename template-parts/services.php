@@ -14,17 +14,17 @@
       <div class="vcard">
         <div class="vcard-photo" style="background:linear-gradient(135deg,#1A1A1A 0%,#2A2A2A 100%);display:flex;align-items:center;justify-content:center;font-size:64px">
           🚰
-          <span class="vcard-photo-tag"><?php esc_html_e( 'Le plus populaire', 'fissuredrainxt' ); ?></span>
+          <span class="vcard-photo-tag">🚰 <?php esc_html_e( 'Drain français', 'fissuredrainxt' ); ?></span>
         </div>
         <span class="vnum">01</span>
-        <div class="vicobox">🚰</div>
-        <h3 class="vt"><?php esc_html_e( 'Drain français', 'fissuredrainxt' ); ?></h3>
-        <p class="vdesc"><?php esc_html_e( 'Installation, remplacement ou réparation de votre drain de fondation. Tuyau perforé en PVC, membrane géotextile et pierre concassée — technique conforme aux normes RBQ actuelles.', 'fissuredrainxt' ); ?></p>
+        <h3 class="vt"><?php esc_html_e( 'Installation & réparation de drain français', 'fissuredrainxt' ); ?></h3>
+        <p class="vdesc"><?php esc_html_e( 'Le drain français est votre première ligne de défense contre les infiltrations. Quand il est défectueux ou absent, les conséquences peuvent être très coûteuses.', 'fissuredrainxt' ); ?></p>
         <ul class="vlist">
-          <li><span class="varr">▸</span><?php esc_html_e( 'Drain en PVC perforé haute résistance', 'fissuredrainxt' ); ?></li>
-          <li><span class="varr">▸</span><?php esc_html_e( 'Membrane géotextile anti-colmatage', 'fissuredrainxt' ); ?></li>
-          <li><span class="varr">▸</span><?php esc_html_e( 'Pierre concassée calibrée', 'fissuredrainxt' ); ?></li>
-          <li><span class="varr">▸</span><?php esc_html_e( 'Inspection caméra avant/après incluse', 'fissuredrainxt' ); ?></li>
+          <li><span class="varr">→</span><?php esc_html_e( 'Excavation complète du périmètre de fondation', 'fissuredrainxt' ); ?></li>
+          <li><span class="varr">→</span><?php esc_html_e( 'Installation d\'un drain perforé haute performance', 'fissuredrainxt' ); ?></li>
+          <li><span class="varr">→</span><?php esc_html_e( 'Pierre drainante filtrante et géotextile', 'fissuredrainxt' ); ?></li>
+          <li><span class="varr">→</span><?php esc_html_e( 'Raccordement au réseau municipal ou puisard', 'fissuredrainxt' ); ?></li>
+          <li><span class="varr">→</span><?php esc_html_e( 'Remblayage et restauration du terrain', 'fissuredrainxt' ); ?></li>
         </ul>
         <span class="vbdg">🛡️ <?php esc_html_e( 'Garantie 25 ans', 'fissuredrainxt' ); ?><sup style="font-size:9px;vertical-align:super">*</sup></span>
       </div>
@@ -33,16 +33,17 @@
       <div class="vcard">
         <div class="vcard-photo" style="background:linear-gradient(135deg,#222222 0%,#1A2A1A 100%);display:flex;align-items:center;justify-content:center;font-size:64px">
           🧱
+          <span class="vcard-photo-tag">🧱 <?php esc_html_e( 'Imperméabilisation', 'fissuredrainxt' ); ?></span>
         </div>
         <span class="vnum">02</span>
-        <div class="vicobox">🧱</div>
-        <h3 class="vt"><?php esc_html_e( 'Imperméabilisation fondation', 'fissuredrainxt' ); ?></h3>
-        <p class="vdesc"><?php esc_html_e( 'Application de la membrane Delta MS sur l\'extérieur de votre fondation. Barrière imperméable permanente contre les infiltrations d\'eau et l\'humidité du sol.', 'fissuredrainxt' ); ?></p>
+        <h3 class="vt"><?php esc_html_e( 'Imperméabilisation de fondation', 'fissuredrainxt' ); ?></h3>
+        <p class="vdesc"><?php esc_html_e( 'Une membrane d\'étanchéité crée une barrière physique impénétrable contre l\'eau. C\'est la solution définitive pour un sous-sol durablement au sec.', 'fissuredrainxt' ); ?></p>
         <ul class="vlist">
-          <li><span class="varr">▸</span><?php esc_html_e( 'Membrane Delta MS haute performance', 'fissuredrainxt' ); ?></li>
-          <li><span class="varr">▸</span><?php esc_html_e( 'Excavation et nettoyage complets', 'fissuredrainxt' ); ?></li>
-          <li><span class="varr">▸</span><?php esc_html_e( 'Scellement des joints et fissures', 'fissuredrainxt' ); ?></li>
-          <li><span class="varr">▸</span><?php esc_html_e( 'Remblayage soigné du terrain', 'fissuredrainxt' ); ?></li>
+          <li><span class="varr">→</span><?php esc_html_e( 'Nettoyage et préparation de la surface béton', 'fissuredrainxt' ); ?></li>
+          <li><span class="varr">→</span><?php esc_html_e( 'Application d\'une membrane Delta MS ou équivalent', 'fissuredrainxt' ); ?></li>
+          <li><span class="varr">→</span><?php esc_html_e( 'Protection de membrane contre les racines', 'fissuredrainxt' ); ?></li>
+          <li><span class="varr">→</span><?php esc_html_e( 'Système de drainage périphérique intégré', 'fissuredrainxt' ); ?></li>
+          <li><span class="varr">→</span><?php esc_html_e( 'Prévention durable des moisissures', 'fissuredrainxt' ); ?></li>
         </ul>
         <span class="vbdg">🛡️ <?php esc_html_e( 'Garantie 25 ans', 'fissuredrainxt' ); ?><sup style="font-size:9px;vertical-align:super">*</sup></span>
       </div>
@@ -51,16 +52,17 @@
       <div class="vcard">
         <div class="vcard-photo" style="background:linear-gradient(135deg,#2A2A2A 0%,#3A2A1A 100%);display:flex;align-items:center;justify-content:center;font-size:64px">
           ⚡
+          <span class="vcard-photo-tag">⚡ <?php esc_html_e( 'Réparation fissure', 'fissuredrainxt' ); ?></span>
         </div>
         <span class="vnum">03</span>
-        <div class="vicobox">⚡</div>
-        <h3 class="vt"><?php esc_html_e( 'Réparation de fissures', 'fissuredrainxt' ); ?></h3>
-        <p class="vdesc"><?php esc_html_e( 'Injection sous pression d\'époxy ou de polyuréthane pour sceller définitivement les fissures de fondation — sans excavation dans la majorité des cas.', 'fissuredrainxt' ); ?></p>
+        <h3 class="vt"><?php esc_html_e( 'Réparation de fissures de fondation', 'fissuredrainxt' ); ?></h3>
+        <p class="vdesc"><?php esc_html_e( 'Injection d\'époxy ou de polyuréthane directement dans la fissure pour un scellement hermétique, rapide et durable — sans excavation dans la majorité des cas.', 'fissuredrainxt' ); ?></p>
         <ul class="vlist">
-          <li><span class="varr">▸</span><?php esc_html_e( 'Injection époxy ou polyuréthane', 'fissuredrainxt' ); ?></li>
-          <li><span class="varr">▸</span><?php esc_html_e( 'Sans excavation dans la majorité des cas', 'fissuredrainxt' ); ?></li>
-          <li><span class="varr">▸</span><?php esc_html_e( 'Interventions en 1 journée', 'fissuredrainxt' ); ?></li>
-          <li><span class="varr">▸</span><?php esc_html_e( 'Étanchéité permanente et certifiée', 'fissuredrainxt' ); ?></li>
+          <li><span class="varr">→</span><?php esc_html_e( 'Inspection et évaluation de la gravité', 'fissuredrainxt' ); ?></li>
+          <li><span class="varr">→</span><?php esc_html_e( 'Injection haute pression époxy ou polyuréthane', 'fissuredrainxt' ); ?></li>
+          <li><span class="varr">→</span><?php esc_html_e( 'Traitement des fissures actives sous pression d\'eau', 'fissuredrainxt' ); ?></li>
+          <li><span class="varr">→</span><?php esc_html_e( 'Finition soignée et vérification d\'étanchéité', 'fissuredrainxt' ); ?></li>
+          <li><span class="varr">→</span><?php esc_html_e( 'Rapport d\'intervention détaillé remis au client', 'fissuredrainxt' ); ?></li>
         </ul>
         <span class="vbdg">🛡️ <?php esc_html_e( 'Garantie 12 ans', 'fissuredrainxt' ); ?><sup style="font-size:9px;vertical-align:super">*</sup></span>
       </div>
@@ -69,18 +71,19 @@
       <div class="vcard">
         <div class="vcard-photo" style="background:linear-gradient(135deg,#1A1A2A 0%,#2A2A3A 100%);display:flex;align-items:center;justify-content:center;font-size:64px">
           📷
+          <span class="vcard-photo-tag">📷 <?php esc_html_e( 'Inspection caméra', 'fissuredrainxt' ); ?></span>
         </div>
         <span class="vnum">04</span>
-        <div class="vicobox">📷</div>
         <h3 class="vt"><?php esc_html_e( 'Inspection par caméra', 'fissuredrainxt' ); ?></h3>
-        <p class="vdesc"><?php esc_html_e( 'Diagnostic vidéo haute définition de votre drain de fondation. Idéal avant l\'achat ou la vente d\'une propriété, ou pour valider l\'état de votre système actuel.', 'fissuredrainxt' ); ?></p>
+        <p class="vdesc"><?php esc_html_e( 'Nos techniciens insèrent une caméra HD dans votre drain pour identifier précisément l\'état du système — avant d\'entreprendre les moindres travaux.', 'fissuredrainxt' ); ?></p>
         <ul class="vlist">
-          <li><span class="varr">▸</span><?php esc_html_e( 'Caméra HD avec rapport vidéo inclus', 'fissuredrainxt' ); ?></li>
-          <li><span class="varr">▸</span><?php esc_html_e( 'Localisation précise des anomalies', 'fissuredrainxt' ); ?></li>
-          <li><span class="varr">▸</span><?php esc_html_e( 'Rapport transmis par courriel', 'fissuredrainxt' ); ?></li>
-          <li><span class="varr">▸</span><?php esc_html_e( 'Recommandé avant toute transaction', 'fissuredrainxt' ); ?></li>
+          <li><span class="varr">→</span><?php esc_html_e( 'Caméra couleur HD avec enregistrement vidéo', 'fissuredrainxt' ); ?></li>
+          <li><span class="varr">→</span><?php esc_html_e( 'Localisation précise des obstructions et fractures', 'fissuredrainxt' ); ?></li>
+          <li><span class="varr">→</span><?php esc_html_e( 'Rapport vidéo remis au propriétaire', 'fissuredrainxt' ); ?></li>
+          <li><span class="varr">→</span><?php esc_html_e( 'Recommandations claires sans pression de vente', 'fissuredrainxt' ); ?></li>
+          <li><span class="varr">→</span><?php esc_html_e( 'Idéal pour inspection pré-achat / pré-vente', 'fissuredrainxt' ); ?></li>
         </ul>
-        <span class="vbdg">📋 <?php esc_html_e( 'RBQ certifié', 'fissuredrainxt' ); ?></span>
+        <span class="vbdg">📋 <?php esc_html_e( 'Rapport vidéo inclus', 'fissuredrainxt' ); ?></span>
       </div>
 
     </div>
