@@ -140,49 +140,208 @@ function lmSub() {
   }, { passive: true });
 })();
 
-/* ── REVEAL ANIMATIONS ── */
+/* ── PREMIUM ANIMATIONS v2.4 ── */
 (function() {
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Auto-attach reveal classes so templates don't need manual edits
+  /* ── 1. SCROLL PROGRESS BAR ── */
+  var prog = document.createElement('div');
+  prog.className = 'fd-prog';
+  document.body.appendChild(prog);
+
+  /* ── 2. PARALLAX + rAF SCROLL LOOP ── */
+  var heroBg   = document.querySelector('.hero-photo-bg');
+  var lastSY   = 0;
+  var ticking  = false;
+
+  function onScroll() {
+    lastSY = window.scrollY;
+    if (!ticking) {
+      requestAnimationFrame(function() {
+        var total = document.body.scrollHeight - window.innerHeight;
+        if (total > 0) prog.style.width = (lastSY / total * 100) + '%';
+        if (heroBg && lastSY < window.innerHeight * 1.6) {
+          heroBg.style.transform = 'translate3d(0,' + (lastSY * 0.32) + 'px,0) scale(1.07)';
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+
+  if (!reduced) window.addEventListener('scroll', onScroll, { passive: true });
+
+  /* ── 3. SPLIT TEXT UTILITY ── */
+  function splitWords(el, outerCls, innerCls) {
+    if (!el) return;
+    var nodes = Array.from(el.childNodes);
+    el.innerHTML = '';
+    nodes.forEach(function(node) {
+      if (node.nodeType !== 3) { el.appendChild(node.cloneNode(true)); return; }
+      node.textContent.split(/(\s+)/).forEach(function(part) {
+        if (!part) return;
+        if (/^\s+$/.test(part)) { el.appendChild(document.createTextNode('\u00a0')); return; }
+        var outer = document.createElement('span'); outer.className = outerCls;
+        var inner = document.createElement('span'); inner.className = innerCls;
+        inner.textContent = part;
+        outer.appendChild(inner);
+        el.appendChild(outer);
+      });
+    });
+  }
+
+  /* ── 4. HERO H1 — GSAP SplitText style ── */
+  if (!reduced) {
+    var heroH1 = document.querySelector('.hero h1');
+    if (heroH1) {
+      splitWords(heroH1, 'ht-word', 'ht-inner');
+      heroH1.querySelectorAll('.ht-inner').forEach(function(w, i) {
+        setTimeout(function() { w.classList.add('ht-in'); }, 180 + i * 80);
+      });
+    }
+  }
+
+  /* ── 5. SECTION H2 SPLIT TEXT ── */
+  if (!reduced) {
+    document.querySelectorAll('.shead h2, .psec-h2').forEach(function(h) {
+      splitWords(h, 'sh-word', 'sh-inner');
+    });
+  }
+
+  /* ── 6. REVEAL CLASS ASSIGNMENT ── */
   var singles = [
-    '.shead', '.hgrid > div:first-child', '.hgrid > .hright-btns', '.ustrip',
-    '.cband', '.sband', '.gleft', '.gright', '.zlayout', '.fwrap',
-    '.linner > .lleft', '.linner > .lw', '.psec-hero-inner > .psec-left', '.psec-hero-inner > .psec-form-wrap'
+    '.shead', '.hgrid > div:first-child', '.hgrid > .hright-btns',
+    '.ustrip', '.cband', '.sband', '.zlayout', '.fwrap',
+    '.linner > .lleft', '.linner > .lw',
+    '.psec-hero-inner > .psec-left', '.psec-hero-inner > .psec-form-wrap'
   ];
   singles.forEach(function(sel) {
     document.querySelectorAll(sel).forEach(function(el) {
-      el.classList.add('reveal');
+      if (!el.classList.contains('reveal') && !el.classList.contains('reveal-left') && !el.classList.contains('reveal-right')) {
+        el.classList.add('reveal');
+      }
+    });
+  });
+
+  /* Two-column directional reveals */
+  var twoCols = [
+    ['.gleft',                              'reveal-left'],
+    ['.gright',                             'reveal-right'],
+    ['.linner > .lleft',                    'reveal-left'],
+    ['.linner > .lw',                       'reveal-right'],
+    ['.psec-hero-inner > .psec-left',       'reveal-left'],
+    ['.psec-hero-inner > .psec-form-wrap',  'reveal-right']
+  ];
+  twoCols.forEach(function(pair) {
+    document.querySelectorAll(pair[0]).forEach(function(el) {
+      el.classList.remove('reveal');
+      el.classList.add(pair[1]);
     });
   });
 
   var groups = [
     '.pgrid > .pcard', '.vgrid > .vcard', '.prgrid > .prcard', '.tmgrid > .tmcard',
-    '.zchips > .zchip', '.fwrap > .fitem', '.ftgrid > div', '.psec-perks > li', '.psec-trust > .psec-tbdg'
+    '.zchips > .zchip', '.fwrap > .fitem', '.ftgrid > div',
+    '.psec-perks > li', '.psec-trust > .psec-tbdg'
   ];
   groups.forEach(function(sel) {
     document.querySelectorAll(sel).forEach(function(el, idx) {
       el.classList.add('reveal');
-      el.style.transitionDelay = (Math.min(idx, 10) * 70) + 'ms';
+      el.style.transitionDelay = (Math.min(idx, 10) * 75) + 'ms';
     });
   });
 
-  var els = document.querySelectorAll('.reveal');
-  if (!els.length) return;
+  /* ── 7. COUNTER ANIMATION ── */
+  var counted = typeof WeakSet !== 'undefined' ? new WeakSet() : null;
 
+  function animCounter(el) {
+    if (counted && counted.has(el)) return;
+    if (counted) counted.add(el);
+    var target = parseInt(el.textContent, 10);
+    if (isNaN(target)) return;
+    var duration = 1500 + Math.min(target, 500);
+    var startTime = null;
+    function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+    function step(ts) {
+      if (!startTime) startTime = ts;
+      var p = Math.min((ts - startTime) / duration, 1);
+      el.textContent = Math.round(easeOut(p) * target);
+      if (p < 1) requestAnimationFrame(step);
+      else el.textContent = target;
+    }
+    requestAnimationFrame(step);
+  }
+
+  /* ── 8. FALLBACK (no IntersectionObserver or reduced-motion) ── */
   if (reduced || !('IntersectionObserver' in window)) {
-    els.forEach(function(el) { el.classList.add('visible'); });
+    document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(function(el) { el.classList.add('visible'); });
+    document.querySelectorAll('.sh-word .sh-inner').forEach(function(el) { el.classList.add('sh-in'); });
+    document.querySelectorAll('.sn').forEach(animCounter);
     return;
   }
 
+  /* ── 9. INTERSECTION OBSERVER ── */
   var obs = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        obs.unobserve(entry.target);
-      }
+      if (!entry.isIntersecting) return;
+      var el = entry.target;
+      el.classList.add('visible');
+      obs.unobserve(el);
+      /* H2 words stagger */
+      el.querySelectorAll && el.querySelectorAll('.sh-word .sh-inner').forEach(function(w, i) {
+        setTimeout(function() { w.classList.add('sh-in'); }, i * 65);
+      });
+      /* Counters */
+      el.querySelectorAll && el.querySelectorAll('.sn').forEach(animCounter);
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+  }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' });
 
-  els.forEach(function(el) { obs.observe(el); });
+  /* Dedicated counter observer on sband (it's already a reveal target) */
+  var sbObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (!entry.isIntersecting) return;
+      entry.target.querySelectorAll('.sn').forEach(animCounter);
+      sbObs.unobserve(entry.target);
+    });
+  }, { threshold: 0.35 });
+  document.querySelectorAll('.sband').forEach(function(el) { sbObs.observe(el); });
+
+  document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(function(el) { obs.observe(el); });
+
+  /* ── 10. CARD 3D TILT ── */
+  if (window.innerWidth > 900) {
+    document.querySelectorAll('.pcard,.vcard,.prcard').forEach(function(card) {
+      card.addEventListener('mousemove', function(e) {
+        var r   = card.getBoundingClientRect();
+        var dx  = ((e.clientX - r.left) / r.width  - 0.5) * 10;
+        var dy  = ((e.clientY - r.top)  / r.height - 0.5) * 10;
+        card.style.transform    = 'perspective(900px) rotateX(' + (-dy) + 'deg) rotateY(' + dx + 'deg) scale(1.025)';
+        card.style.boxShadow    = '0 24px 48px rgba(0,0,0,.38)';
+        card.style.zIndex       = '2';
+        card.style.transition   = 'transform .1s ease, box-shadow .1s ease';
+      });
+      card.addEventListener('mouseleave', function() {
+        card.style.transform    = '';
+        card.style.boxShadow    = '';
+        card.style.zIndex       = '';
+        card.style.transition   = '';
+      });
+    });
+  }
+
+  /* ── 11. MAGNETIC BUTTONS ── */
+  if (window.innerWidth > 900) {
+    document.querySelectorAll('.nbtn, .hright-btn-primary, .sqt').forEach(function(btn) {
+      btn.addEventListener('mousemove', function(e) {
+        var r  = btn.getBoundingClientRect();
+        var dx = (e.clientX - (r.left + r.width  / 2)) * 0.25;
+        var dy = (e.clientY - (r.top  + r.height / 2)) * 0.25;
+        btn.style.transform = 'translate(' + dx + 'px,' + dy + 'px) translateY(-2px)';
+      });
+      btn.addEventListener('mouseleave', function() {
+        btn.style.transform = '';
+      });
+    });
+  }
+
 })();
