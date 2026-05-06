@@ -5,9 +5,9 @@
 <!-- CERTIF BAND -->
 <div class="cband">
   <div class="cinner">
-    <div class="citem"><img class="cico" src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69d419d24ba93ac572be3c77.png" alt="" width="26" height="26"><?php esc_html_e( 'RBQ 5863-7364-01', 'fissuredrainxt' ); ?></div>
+    <div class="citem"><img class="cico cico-lg" src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69d419d24ba93ac572be3c77.png" alt="" width="26" height="26"><?php esc_html_e( 'RBQ 5863-7364-01', 'fissuredrainxt' ); ?></div>
     <div class="csep" aria-hidden="true"></div>
-    <div class="citem"><img class="cico" src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69a7b543618c8dbaeda9de00.png" alt="" width="26" height="26"><?php esc_html_e( 'Garantie 25 ans', 'fissuredrainxt' ); ?><sup style="font-size:9px;vertical-align:super;color:rgba(245,168,0,.75)">*</sup> <?php esc_html_e( 'transférable', 'fissuredrainxt' ); ?></div>
+    <div class="citem"><img class="cico cico-lg" src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69a7b543618c8dbaeda9de00.png" alt="" width="26" height="26"><?php esc_html_e( 'Garantie 25 ans', 'fissuredrainxt' ); ?><sup style="font-size:9px;vertical-align:super;color:rgba(245,168,0,.75)">*</sup> <?php esc_html_e( 'transférable', 'fissuredrainxt' ); ?></div>
     <div class="csep" aria-hidden="true"></div>
     <div class="citem"><svg class="cico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg><?php esc_html_e( 'Écoresponsable', 'fissuredrainxt' ); ?></div>
     <div class="csep" aria-hidden="true"></div>

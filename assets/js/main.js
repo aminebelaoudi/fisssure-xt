@@ -142,8 +142,38 @@ function lmSub() {
 
 /* ── REVEAL ANIMATIONS ── */
 (function() {
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Auto-attach reveal classes so templates don't need manual edits
+  var singles = [
+    '.shead', '.hgrid > div:first-child', '.hgrid > .hright-btns', '.ustrip',
+    '.cband', '.sband', '.gleft', '.gright', '.zlayout', '.fwrap',
+    '.linner > .lleft', '.linner > .lw', '.psec-hero-inner > .psec-left', '.psec-hero-inner > .psec-form-wrap'
+  ];
+  singles.forEach(function(sel) {
+    document.querySelectorAll(sel).forEach(function(el) {
+      el.classList.add('reveal');
+    });
+  });
+
+  var groups = [
+    '.pgrid > .pcard', '.vgrid > .vcard', '.prgrid > .prcard', '.tmgrid > .tmcard',
+    '.zchips > .zchip', '.fwrap > .fitem', '.ftgrid > div', '.psec-perks > li', '.psec-trust > .psec-tbdg'
+  ];
+  groups.forEach(function(sel) {
+    document.querySelectorAll(sel).forEach(function(el, idx) {
+      el.classList.add('reveal');
+      el.style.transitionDelay = (Math.min(idx, 10) * 70) + 'ms';
+    });
+  });
+
   var els = document.querySelectorAll('.reveal');
   if (!els.length) return;
+
+  if (reduced || !('IntersectionObserver' in window)) {
+    els.forEach(function(el) { el.classList.add('visible'); });
+    return;
+  }
 
   var obs = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
@@ -152,7 +182,7 @@ function lmSub() {
         obs.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
 
   els.forEach(function(el) { obs.observe(el); });
 })();

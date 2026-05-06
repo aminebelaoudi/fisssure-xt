@@ -76,8 +76,10 @@ sup.ast{font-size:8px;vertical-align:super;color:rgba(245,168,0,.75);font-weight
 /* ── ANIMATIONS ── */
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.7)}}
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
-.reveal.visible{opacity:1;transform:none}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.72)}}
+@keyframes hero-pan{0%{transform:scale(1) translate3d(0,0,0)}50%{transform:scale(1.04) translate3d(-1.2%,0,0)}100%{transform:scale(1.07) translate3d(1.2%,-1%,0)}}
+.reveal{opacity:0;transform:translate3d(0,28px,0) scale(.985);filter:blur(2px);transition:opacity .75s cubic-bezier(.22,.61,.36,1),transform .75s cubic-bezier(.22,.61,.36,1),filter .75s cubic-bezier(.22,.61,.36,1)}
+.reveal.visible{opacity:1;transform:none;filter:blur(0)}
 .reveal-d1{transition-delay:.08s}
 .reveal-d2{transition-delay:.17s}
 .reveal-d3{transition-delay:.26s}
@@ -104,8 +106,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--dk);border
 
 /* ── HERO ── */
 .hero{min-height:100vh;background:var(--dk);display:flex;align-items:center;padding:110px 32px 60px;position:relative;overflow:hidden}
-.hero-photo-bg{position:absolute;inset:0;background-image:url('https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69fbb4c24ef91f2f59390ce7.png');background-size:cover;background-position:center;opacity:.12;pointer-events:none;z-index:0}
-.hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(245,168,0,.025) 0px,rgba(245,168,0,.025) 1px,transparent 1px,transparent 40px);pointer-events:none;z-index:0}
+.hero-photo-bg{position:absolute;inset:0;background-image:url('https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69fbb4c24ef91f2f59390ce7.png');background-size:cover;background-position:center;opacity:.12;pointer-events:none;z-index:0;transform-origin:center;animation:hero-pan 20s ease-in-out infinite alternate}
+.hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(245,168,0,.025) 0px,rgba(245,168,0,.025) 1px,transparent 1px,transparent 40px);pointer-events:none;z-index:0;mix-blend-mode:screen}
 .hero::after{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--y);z-index:1}
 .hgrid{max-width:var(--max-w);margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 460px;gap:60px;align-items:center;position:relative;z-index:1}
 .hpill{display:inline-flex;align-items:center;gap:8px;background:rgba(245,168,0,.12);border:1px solid rgba(245,168,0,.35);border-radius:3px;padding:6px 14px;font-family:var(--fd);font-size:12px;font-weight:700;color:var(--y);letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px}
@@ -118,6 +120,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--dk);border
 .hright-btns{display:flex;flex-direction:column;gap:14px;align-items:stretch}
 .hright-btn-primary{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--y);color:var(--dk);padding:20px 28px;border-radius:var(--r);font-family:var(--fd);font-size:18px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;transition:.15s;width:100%}
 .hright-btn-primary:hover{background:var(--yl)}
+.nbtn,.hbtn,.hright-btn-primary,.hright-btn-secondary,.lbtn,.psec-cta-btn-primary,.psec-cta-btn-secondary,.sqt,.scl{transition:transform .22s cubic-bezier(.22,.61,.36,1),box-shadow .22s cubic-bezier(.22,.61,.36,1),background-color .22s ease,color .22s ease,border-color .22s ease}
+.nbtn:hover,.hbtn:hover,.hright-btn-primary:hover,.hright-btn-secondary:hover,.lbtn:hover,.psec-cta-btn-primary:hover,.psec-cta-btn-secondary:hover,.sqt:hover,.scl:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.18)}
+.pcard,.vcard,.prcard,.tmcard,.fitem,.zbox,.lw,.psec-form-wrap{transition:transform .3s cubic-bezier(.22,.61,.36,1),box-shadow .3s cubic-bezier(.22,.61,.36,1),border-color .3s ease}
+.pcard:hover,.vcard:hover,.prcard:hover,.tmcard:hover,.fitem:hover,.zbox:hover,.lw:hover,.psec-form-wrap:hover{transform:translateY(-6px);box-shadow:0 16px 34px rgba(0,0,0,.14)}
 .hright-btn-secondary{display:flex;align-items:center;justify-content:center;gap:10px;background:transparent;color:var(--w);padding:20px 28px;border-radius:var(--r);font-family:var(--fd);font-size:18px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;border:2px solid rgba(255,255,255,.3);transition:.15s;width:100%}
 .hright-btn-secondary:hover{border-color:var(--y);color:var(--y)}
 .hright-badges{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;padding-top:4px}
@@ -133,6 +139,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--dk);border
 .cinner{max-width:var(--max-w);margin:0 auto;padding:22px 32px;display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap}
 .citem{display:flex;align-items:center;gap:9px;font-family:var(--fd);font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5)}
 .cico{width:26px;height:26px;object-fit:contain;flex-shrink:0;display:block}
+.cico-lg{width:32px;height:32px}
 svg.cico{stroke:var(--y);fill:none}
 .csep{width:1px;height:22px;background:rgba(255,255,255,.1)}
 
@@ -368,7 +375,7 @@ footer{background:var(--dk2);border-top:4px solid var(--y);padding:56px 32px 28p
 }
 
 /* ── GUARANTEE CLAUSE ── */
-.clause-sec{background:#030810;padding:20px 24px;text-align:center;border-top:1px solid rgba(255,255,255,.1)}
+.clause-sec{background:var(--dk2);padding:20px 24px;text-align:center;border-top:1px solid rgba(255,255,255,.1)}
 .clause-in{max-width:var(--max-w);margin:0 auto;font-size:12px;color:rgba(255,255,255,.55);line-height:1.8;font-weight:300}
 
 /* ── STICKY MOBILE ── */
@@ -433,3 +440,8 @@ body{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:2.25rem}
 .nl,.ftlinks,.lperks,.glist,.vlist,.ftcerts,.cinner,.zchips{list-style:none!important}
 /* Ensure WP body_class paddings don't interfere */
 body.wp-admin-bar-showing{margin-top:0!important}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .reveal{opacity:1!important;transform:none!important;filter:none!important}
+}

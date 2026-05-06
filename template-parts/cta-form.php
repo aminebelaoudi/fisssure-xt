@@ -30,10 +30,8 @@
       <div class="lbody">
         <span class="ltag"><?php esc_html_e( 'Demande de soumission', 'fissuredrainxt' ); ?></span>
         <div class="lttl"><?php esc_html_e( 'Prêt à démarrer ?', 'fissuredrainxt' ); ?></div>
-        <p class="lstl"><?php esc_html_e( 'Accédez à notre formulaire complet en ligne pour une soumission rapide et détaillée.', 'fissuredrainxt' ); ?></p>
         <a href="/soumission" class="lbtn"><?php esc_html_e( 'Demander ma soumission →', 'fissuredrainxt' ); ?></a>
         <a href="tel:15147307107" class="scall">📞 <?php esc_html_e( '(514) 730-7107', 'fissuredrainxt' ); ?></a>
-        <p class="sref"><?php esc_html_e( 'Lun–Ven 7h–18h · Sam 8h–16h', 'fissuredrainxt' ); ?></p>
       </div>
     </div>
 
