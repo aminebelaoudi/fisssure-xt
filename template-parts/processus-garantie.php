@@ -61,7 +61,7 @@
       <div class="gbig">25</div>
       <div class="glblbig"><?php esc_html_e( 'Ans de garantie', 'fissuredrainxt' ); ?></div>
       <p style="font-size:14px;color:rgba(26,26,26,.6);max-width:260px;margin:0 auto 28px;font-weight:300;line-height:1.65"><?php esc_html_e( 'La meilleure garantie du secteur, disponible à Montréal, Laval et Rive-Nord', 'fissuredrainxt' ); ?></p>
-      <a href="#soumission" style="display:inline-block;background:var(--dk);color:var(--y);padding:15px 30px;font-family:var(--fd);font-size:15px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;transition:.2s;border-radius:3px"><?php esc_html_e( 'Obtenir ma soumission →', 'fissuredrainxt' ); ?></a>
+      <a href="/soumission" style="display:inline-block;background:var(--dk);color:var(--y);padding:15px 30px;font-family:var(--fd);font-size:15px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;transition:.2s;border-radius:3px"><?php esc_html_e( 'Obtenir ma soumission →', 'fissuredrainxt' ); ?></a>
     </div>
   </div>
 </section>

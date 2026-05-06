@@ -34,7 +34,7 @@
           <span class="stag" style="margin-bottom:12px;display:block"><?php esc_html_e( 'Votre ville n\'est pas listée ?', 'fissuredrainxt' ); ?></span>
           <p><?php esc_html_e( 'Nous couvrons de nombreuses autres municipalités des Laurentides et de Lanaudière. Contactez-nous pour vérifier si nous desservons votre secteur.', 'fissuredrainxt' ); ?></p>
           <a href="tel:15147307107" class="zbcall">📞 <?php esc_html_e( '(514) 730-7107', 'fissuredrainxt' ); ?></a>
-          <a href="#soumission" class="zbquote"><?php esc_html_e( 'Soumission en ligne →', 'fissuredrainxt' ); ?></a>
+          <a href="/soumission" class="zbquote"><?php esc_html_e( 'Soumission en ligne →', 'fissuredrainxt' ); ?></a>
         </div>
       </div>
     </div>
