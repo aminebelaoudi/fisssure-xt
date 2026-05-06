@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 42" height="42" role="img" aria-label="Fissure et Drain XT">
+  <!-- Icon mark -->
+  <rect x="0" y="4" width="8" height="34" rx="2" fill="#F5A800"/>
+  <rect x="10" y="4" width="8" height="20" rx="2" fill="#F5A800" opacity=".65"/>
+  <rect x="10" y="26" width="8" height="12" rx="2" fill="#F5A800" opacity=".4"/>
+  <!-- Brand name -->
+  <text x="26" y="20" font-family="'Barlow Condensed', Impact, Arial Narrow, sans-serif" font-size="18" font-weight="900" fill="#FFFFFF" letter-spacing=".5">FISSURE &amp; DRAIN</text>
+  <!-- Tagline -->
+  <text x="27" y="34" font-family="'Barlow Condensed', Impact, Arial Narrow, sans-serif" font-size="10" font-weight="700" fill="#F5A800" letter-spacing="3.5">XT — EXPERT FONDATION</text>
+</svg>
