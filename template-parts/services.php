@@ -26,7 +26,7 @@
           <li><span class="varr">→</span><?php esc_html_e( 'Raccordement au réseau municipal ou puisard', 'fissuredrainxt' ); ?></li>
           <li><span class="varr">→</span><?php esc_html_e( 'Remblayage et restauration du terrain', 'fissuredrainxt' ); ?></li>
         </ul>
-        <span class="vbdg">🛡️ <?php esc_html_e( 'Garantie 25 ans', 'fissuredrainxt' ); ?><sup style="font-size:9px;vertical-align:super">*</sup></span>
+        <span class="vbdg"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg> <?php esc_html_e( 'Garantie 25 ans', 'fissuredrainxt' ); ?><sup style="font-size:9px;vertical-align:super">*</sup></span>
       </div>
 
       <!-- Service 2 -->
@@ -44,7 +44,7 @@
           <li><span class="varr">→</span><?php esc_html_e( 'Système de drainage périphérique intégré', 'fissuredrainxt' ); ?></li>
           <li><span class="varr">→</span><?php esc_html_e( 'Prévention durable des moisissures', 'fissuredrainxt' ); ?></li>
         </ul>
-        <span class="vbdg">🛡️ <?php esc_html_e( 'Garantie 25 ans', 'fissuredrainxt' ); ?><sup style="font-size:9px;vertical-align:super">*</sup></span>
+        <span class="vbdg"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg> <?php esc_html_e( 'Garantie 25 ans', 'fissuredrainxt' ); ?><sup style="font-size:9px;vertical-align:super">*</sup></span>
       </div>
 
       <!-- Service 3 -->
@@ -62,7 +62,7 @@
           <li><span class="varr">→</span><?php esc_html_e( 'Finition soignée et vérification d\'étanchéité', 'fissuredrainxt' ); ?></li>
           <li><span class="varr">→</span><?php esc_html_e( 'Rapport d\'intervention détaillé remis au client', 'fissuredrainxt' ); ?></li>
         </ul>
-        <span class="vbdg">🛡️ <?php esc_html_e( 'Garantie 12 ans', 'fissuredrainxt' ); ?><sup style="font-size:9px;vertical-align:super">*</sup></span>
+        <span class="vbdg"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg> <?php esc_html_e( 'Garantie 12 ans', 'fissuredrainxt' ); ?><sup style="font-size:9px;vertical-align:super">*</sup></span>
       </div>
 
       <!-- Service 4 -->
@@ -80,7 +80,7 @@
           <li><span class="varr">→</span><?php esc_html_e( 'Recommandations claires sans pression de vente', 'fissuredrainxt' ); ?></li>
           <li><span class="varr">→</span><?php esc_html_e( 'Idéal pour inspection pré-achat / pré-vente', 'fissuredrainxt' ); ?></li>
         </ul>
-        <span class="vbdg">📋 <?php esc_html_e( 'Rapport vidéo inclus', 'fissuredrainxt' ); ?></span>
+        <span class="vbdg"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="4" rx="1"/><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><path d="M9 12h6M9 16h4"/></svg> <?php esc_html_e( 'Rapport vidéo inclus', 'fissuredrainxt' ); ?></span>
       </div>
 
     </div>

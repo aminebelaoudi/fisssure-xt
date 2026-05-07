@@ -330,23 +330,7 @@ function lmSub() {
       });
     }, 4000);
 
-    /* 15 — Card 3D tilt (desktop only) */
-    if (window.innerWidth > 900) {
-      gsap.utils.toArray('.pcard, .vcard, .prcard').forEach(function (card) {
-        card.addEventListener('mousemove', function (e) {
-          var r = card.getBoundingClientRect();
-          var dx = ((e.clientX - r.left) / r.width  - 0.5) * 12;
-          var dy = ((e.clientY - r.top)  / r.height - 0.5) * 12;
-          gsap.to(card, {
-            rotateX: -dy, rotateY: dx, scale: 1.03,
-            transformPerspective: 900, duration: 0.3, ease: 'power2.out'
-          });
-        });
-        card.addEventListener('mouseleave', function () {
-          gsap.to(card, { rotateX: 0, rotateY: 0, scale: 1, duration: 0.6, ease: 'power3.out' });
-        });
-      });
-    }
+    /* 15 — Card hover lift only (CSS handles translateY, no mouse-tracking tilt) */
 
     /* 16 — Magnetic buttons (desktop only) */
     if (window.innerWidth > 900) {
