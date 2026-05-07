@@ -2,7 +2,9 @@
 <!-- CERTIFICATIONS ET GARANTIES -->
 <section class="certif-band" aria-label="<?php esc_attr_e( 'Certifications et Garanties', 'fissuredrainxt' ); ?>">
   <div class="cont">
-    <div class="certif-band__label"><?php esc_html_e( 'Certifications et Garanties', 'fissuredrainxt' ); ?></div>
+    <div class="certif-band__head">
+      <span class="stag dk"><?php esc_html_e( 'Certifications et Garanties', 'fissuredrainxt' ); ?></span>
+    </div>
     <div class="certif-band__logos">
       <div class="certif-logo">
         <img src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69ac9f327bdf387d57d67f3f.png"
