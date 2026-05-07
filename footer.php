@@ -1,4 +1,5 @@
 <?php defined( 'ABSPATH' ) || exit; ?>
+<?php get_template_part( 'template-parts/certif-logos' ); ?>
 <!-- FOOTER -->
 <footer role="contentinfo">
   <div class="ftinner">
@@ -32,7 +33,7 @@
           <li><a href="#services"><?php esc_html_e( 'Imperméabilisation', 'fissuredrainxt' ); ?></a></li>
           <li><a href="#services"><?php esc_html_e( 'Réparation fissures', 'fissuredrainxt' ); ?></a></li>
           <li><a href="#services"><?php esc_html_e( 'Inspection caméra', 'fissuredrainxt' ); ?></a></li>
-          <li><a href="#soumission"><?php esc_html_e( 'Soumission gratuite', 'fissuredrainxt' ); ?></a></li>
+          <li><a href="/soumission"><?php esc_html_e( 'Soumission gratuite', 'fissuredrainxt' ); ?></a></li>
         </ul>
       </div>
 
@@ -85,7 +86,7 @@
       <div class="ftl2">
         <a href="<?php echo esc_url( get_privacy_policy_url() ?: home_url('/') ); ?>"><?php esc_html_e( 'Politique de confidentialité', 'fissuredrainxt' ); ?></a>
         <a href="#garantie"><?php esc_html_e( 'Modalités de garantie', 'fissuredrainxt' ); ?></a>
-        <a href="#soumission"><?php esc_html_e( 'Soumission gratuite', 'fissuredrainxt' ); ?></a>
+        <a href="/soumission"><?php esc_html_e( 'Soumission gratuite', 'fissuredrainxt' ); ?></a>
       </div>
     </div>
   </div>
@@ -94,7 +95,7 @@
 <!-- STICKY MOBILE -->
 <div class="smob">
   <a href="tel:15147307107" class="scl">📞 <?php esc_html_e( 'Appeler', 'fissuredrainxt' ); ?></a>
-  <a href="#soumission" class="sqt"><?php esc_html_e( 'Soumission gratuite →', 'fissuredrainxt' ); ?></a>
+  <a href="/soumission" class="sqt"><?php esc_html_e( 'Soumission gratuite →', 'fissuredrainxt' ); ?></a>
 </div>
 
 <!-- CLAUSE GARANTIE -->

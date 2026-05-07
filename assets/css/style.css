@@ -334,6 +334,15 @@ h4.prt{font-family:var(--fd);font-size:22px;font-weight:800;text-transform:upper
 .scall:hover{background:var(--y);color:var(--dk)}
 .sref{font-size:11px;color:var(--gray4)}
 
+/* ── CERTIF BAND ── */
+.certif-band{background:#fff;padding:48px 32px;border-top:1px solid rgba(0,0,0,.07);border-bottom:1px solid rgba(0,0,0,.07)}
+.certif-band__label{font-family:var(--fd);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(0,0,0,.35);text-align:center;margin-bottom:32px}
+.certif-band__logos{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:40px}
+.certif-logo{display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.certif-logo img{height:70px;width:auto;object-fit:contain;filter:none;opacity:.7;transition:opacity .3s}
+.certif-logo img:hover{opacity:1}
+@media(max-width:600px){.certif-band__logos{gap:28px}.certif-logo img{height:52px}}
+
 /* ── FOOTER ── */
 footer{background:var(--dk2);border-top:4px solid var(--y);padding:56px 32px 28px}
 .ftinner{max-width:var(--max-w);margin:0 auto}

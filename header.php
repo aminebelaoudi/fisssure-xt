@@ -39,7 +39,7 @@
     <!-- Right side -->
     <div class="nr">
       <a href="tel:15147307107" class="ntel">📞 <?php esc_html_e( '(514) 730-7107', 'fissuredrainxt' ); ?></a>
-      <a href="#soumission" class="nbtn"><?php esc_html_e( 'Soumission gratuite', 'fissuredrainxt' ); ?></a>
+      <a href="/soumission" class="nbtn"><?php esc_html_e( 'Soumission gratuite', 'fissuredrainxt' ); ?></a>
     </div>
 
     <!-- Hamburger -->

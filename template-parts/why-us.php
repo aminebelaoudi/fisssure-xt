@@ -70,7 +70,7 @@
     <div class="uncertain-line" aria-hidden="true"></div>
     <p><?php esc_html_e( 'C\'est normal. Chaque situation est différente. Nos techniciens effectuent une visite gratuite sur place pour évaluer votre fondation, identifier les problèmes réels et vous proposer une solution adaptée à votre budget — sans pression et sans engagement.', 'fissuredrainxt' ); ?></p>
     <div class="uncertain-btns">
-      <a href="#widget-soumission" class="btn-y">📋 <?php esc_html_e( 'Demander une visite gratuite', 'fissuredrainxt' ); ?></a>
+      <a href="/soumission" class="btn-y">📋 <?php esc_html_e( 'Demander une visite gratuite', 'fissuredrainxt' ); ?></a>
       <a href="tel:15147307107" class="btn-dk">📞 <?php esc_html_e( 'Parler à un expert', 'fissuredrainxt' ); ?></a>
     </div>
     <p style="font-size:12px;color:var(--gr4);margin-top:18px;"><?php esc_html_e( 'Lun–Ven 7h–18h · Sam 8h–16h · Réponse garantie en 2h', 'fissuredrainxt' ); ?></p>
