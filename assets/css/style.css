@@ -403,8 +403,8 @@ footer{background:var(--dk2);border-top:4px solid var(--y);padding:56px 32px 28p
 .clause-in{max-width:var(--max-w);margin:0 auto;font-size:12px;color:rgba(255,255,255,.55);line-height:1.8;font-weight:300}
 
 /* ── STICKY MOBILE ── */
-.smob{display:none;position:fixed;bottom:0;left:0;right:0;z-index:999;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:var(--dk);border-top:3px solid var(--y);gap:10px}
-.smob a{flex:1;text-align:center;padding:13px;font-family:var(--fd);font-size:14px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:3px}
+.smob{display:none;position:fixed;bottom:0;left:0;right:0;z-index:999;padding:7px 12px calc(7px + env(safe-area-inset-bottom));background:var(--dk);border-top:2px solid var(--y);gap:8px}
+.smob a{flex:1;text-align:center;padding:9px 8px;font-family:var(--fd);font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:3px}
 .scl{background:var(--gray);color:var(--w)!important}
 .sqt{background:var(--y);color:var(--dk)}
 .sqt:hover{background:var(--yl)}
@@ -425,7 +425,7 @@ footer{background:var(--dk2);border-top:4px solid var(--y);padding:56px 32px 28p
   .nl,.nr{display:none}
   .hbg{display:flex}
   .smob{display:flex}
-  body{padding-bottom:62px}
+  body{padding-bottom:46px}
   .sec{padding:72px 20px}
   .hero{padding:90px 20px 52px}
   .vgrid,.tmgrid,.pgrid{grid-template-columns:1fr}
@@ -434,7 +434,7 @@ footer{background:var(--dk2);border-top:4px solid var(--y);padding:56px 32px 28p
   .zchips{grid-template-columns:1fr 1fr}
   .ftgrid{grid-template-columns:1fr}
   .ftbot{flex-direction:column;text-align:center}
-  .cinner{display:grid;grid-template-columns:1fr;gap:10px;padding:16px 20px;justify-items:start}
+  .cinner{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px;padding:16px 20px;justify-items:start}
   .citem{font-size:12px;gap:10px;line-height:1.35}
   .csep{display:none}
   .gleft,.gright{padding:40px}
