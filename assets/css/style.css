@@ -394,6 +394,7 @@ footer{background:var(--dk2);border-top:4px solid var(--y);padding:56px 32px 28p
 @media(max-width:900px){
   .psec-hero-inner{grid-template-columns:1fr}
   .psec-hero{padding:100px 20px 60px}
+  .psec-form-wrap{border-radius:0;box-shadow:none;border-left:none;border-right:none;margin:0 -20px}
   .psec-cta-inner{flex-direction:column;text-align:center}
   .psec-cta-btns{justify-content:center}
 }
@@ -434,8 +435,9 @@ footer{background:var(--dk2);border-top:4px solid var(--y);padding:56px 32px 28p
   .zchips{grid-template-columns:1fr 1fr}
   .ftgrid{grid-template-columns:1fr}
   .ftbot{flex-direction:column;text-align:center}
-  .cinner{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px;padding:16px 20px;justify-items:start}
-  .citem{font-size:12px;gap:10px;line-height:1.35}
+  .cinner{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px 0;padding:14px 16px}
+  .citem{font-size:11px;gap:6px;line-height:1.2;padding:5px 12px;background:rgba(255,255,255,.05);border-radius:20px;border:1px solid rgba(255,255,255,.08)}
+  .cico,.cico-lg{width:14px;height:14px}
   .csep{display:none}
   .gleft,.gright{padding:40px}
   .hright-btns .hright-btn-primary,.hright-btns .hright-btn-secondary{width:100%}
