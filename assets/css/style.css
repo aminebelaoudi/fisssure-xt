@@ -121,7 +121,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--dk);border
 
 /* ── HERO ── */
 .hero{min-height:100vh;background:var(--dk);display:flex;align-items:center;padding:110px 32px 60px;position:relative;overflow:hidden}
-.hero-photo-bg{position:absolute;inset:0;background-image:url('https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69fbb4c24ef91f2f59390ce7.png');background-size:cover;background-position:center;opacity:.12;pointer-events:none;z-index:0;transform-origin:center;animation:hero-pan 20s ease-in-out infinite alternate}
+.hero-photo-bg{position:absolute;inset:-15% -5%;background-image:url('https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69fbb4c24ef91f2f59390ce7.png');background-size:cover;background-position:center;opacity:.12;pointer-events:none;z-index:0;transform-origin:center;animation:hero-pan 20s ease-in-out infinite alternate;will-change:transform;backface-visibility:hidden;transform:translateZ(0)}
 .hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(245,168,0,.025) 0px,rgba(245,168,0,.025) 1px,transparent 1px,transparent 40px);pointer-events:none;z-index:0;mix-blend-mode:screen}
 .hero::after{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--y);z-index:1}
 .hgrid{max-width:var(--max-w);margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 460px;gap:60px;align-items:center;position:relative;z-index:1}

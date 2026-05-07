@@ -194,15 +194,7 @@ function lmSub() {
       });
     }
 
-    /* 2 — Hero parallax (scrub, GPU only) */
-    var heroBg = document.querySelector('.hero-photo-bg');
-    if (heroBg) {
-      gsap.to(heroBg, {
-        yPercent: 22,
-        ease: 'none',
-        scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1 }
-      });
-    }
+    /* 2 — Hero parallax disabled — inset overflow used instead to avoid edge artifacts */
 
     /* 3 — Hero H1 — animate as block (preserves span=yellow, text=white, all spacing) */
     var heroH1 = document.querySelector('.hero h1');
@@ -293,7 +285,8 @@ function lmSub() {
         scrollTrigger: { trigger: el, start: 'top 92%' }
       });
     });
-    gsap.utils.toArray('.gright, .linner > .lw, .psec-hero-inner > .psec-form-wrap').forEach(function (el) {
+    /* .psec-form-wrap excluded — contains iframe, must stay visible immediately */
+    gsap.utils.toArray('.gright, .linner > .lw').forEach(function (el) {
       gsap.from(el, {
         opacity: 0, x: 55, duration: 1.0,
         immediateRender: false,
@@ -391,8 +384,8 @@ function lmSub() {
     ['.gright',                            'reveal-right'],
     ['.linner > .lleft',                   'reveal-left'],
     ['.linner > .lw',                      'reveal-right'],
-    ['.psec-hero-inner > .psec-left',      'reveal-left'],
-    ['.psec-hero-inner > .psec-form-wrap', 'reveal-right']
+    ['.psec-hero-inner > .psec-left',      'reveal-left']
+    /* .psec-form-wrap intentionally excluded — iframe must show immediately */
   ];
   leftRight.forEach(function (pair) {
     document.querySelectorAll(pair[0]).forEach(function (el) {
