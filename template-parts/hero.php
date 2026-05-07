@@ -5,9 +5,10 @@
   <div class="hgrid cont">
 
     <div>
-      <div class="hpill">
-        <div class="hpulse"></div>
-        RBQ 5863-7364-01 &middot; Garantie 25 ans<sup style="font-size:9px;vertical-align:super;color:rgba(245,168,0,.75)">*</sup> &middot; Écoresponsable
+      <div class="hpills">
+        <div class="hpill"><div class="hpulse"></div><?php esc_html_e( 'RBQ 5863-7364-01', 'fissuredrainxt' ); ?></div>
+        <div class="hpill"><div class="hpulse" style="animation-delay:.6s"></div><?php esc_html_e( 'Garantie 25 ans', 'fissuredrainxt' ); ?><sup style="font-size:9px;vertical-align:super;color:rgba(245,168,0,.75)">*</sup></div>
+        <div class="hpill"><div class="hpulse" style="animation-delay:1.2s"></div><?php esc_html_e( 'Écoresponsable', 'fissuredrainxt' ); ?></div>
       </div>
       <h1>Fondation<br><span>protégée.</span><br>Maison<br><em>sécurisée.</em></h1>
       <div class="hdash"></div>
