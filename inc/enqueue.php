@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 function fdxt_enqueue_assets() {
 
     $uri = get_template_directory_uri();
-    $v   = '2.5.1'; // bump to force cache refresh
+    $v   = '2.5.2'; // bump to force cache refresh
 
     // ── Fonts (preconnect + stylesheet) ──────────────────────────────────
     // DNS prefetch

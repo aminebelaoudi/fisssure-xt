@@ -231,7 +231,8 @@ function lmSub() {
       gsap.fromTo(h2.querySelectorAll('.sh-inner'),
         { yPercent: 110, opacity: 0 },
         { yPercent: 0, opacity: 1, duration: 0.8, stagger: 0.065, ease: 'power3.out',
-          scrollTrigger: { trigger: h2, start: 'top 90%' } }
+          immediateRender: false,
+          scrollTrigger: { trigger: h2, start: 'top 92%' } }
       );
     });
 
@@ -239,7 +240,8 @@ function lmSub() {
     document.querySelectorAll('.shead > p, .shead > .ssub').forEach(function (p) {
       gsap.from(p, {
         opacity: 0, y: 18, duration: 0.7,
-        scrollTrigger: { trigger: p, start: 'top 92%' }
+        immediateRender: false,
+        scrollTrigger: { trigger: p, start: 'top 95%' }
       });
     });
 
@@ -251,7 +253,7 @@ function lmSub() {
       el.textContent = '0';
       gsap.to(obj, {
         val: target, duration: 2.2, ease: 'power2.out',
-        scrollTrigger: { trigger: el, start: 'top 90%' },
+        scrollTrigger: { trigger: el, start: 'top 92%' },
         onUpdate: function () { el.textContent = Math.round(obj.val); },
         onComplete: function () { el.textContent = target; }
       });
@@ -262,18 +264,19 @@ function lmSub() {
       var cards = gsap.utils.toArray(sel);
       if (!cards.length) return;
       gsap.from(cards, {
-        opacity: 0, y: 65, scale: 0.95, duration: 0.85, stagger: 0.1,
+        opacity: 0, y: 55, scale: 0.97, duration: 0.85, stagger: 0.1,
         ease: 'power3.out',
-        scrollTrigger: { trigger: cards[0].parentElement, start: 'top 86%' }
+        immediateRender: false,
+        scrollTrigger: { trigger: cards[0].parentElement, start: 'top 92%' }
       });
     });
 
     /* 10 — Chips, perks, FAQ stagger */
     var itemDefs = [
-      ['.zchips > .zchip',   -28, 0  ],
-      ['.psec-perks > li',   -24, 0  ],
-      ['.fwrap > .fitem',      0, 35 ],
-      ['.psec-trust > .psec-tbdg', 0, 30]
+      ['.zchips > .zchip',        -22, 0  ],
+      ['.psec-perks > li',         -18, 0  ],
+      ['.fwrap > .fitem',            0, 30 ],
+      ['.psec-trust > .psec-tbdg',   0, 24]
     ];
     itemDefs.forEach(function (def) {
       var items = gsap.utils.toArray(def[0]);
@@ -281,43 +284,62 @@ function lmSub() {
       gsap.from(items, {
         opacity: 0, x: def[1], y: def[2], duration: 0.65, stagger: 0.07,
         ease: 'power3.out',
-        scrollTrigger: { trigger: items[0].parentElement, start: 'top 87%' }
+        immediateRender: false,
+        scrollTrigger: { trigger: items[0].parentElement, start: 'top 92%' }
       });
     });
 
     /* 11 — Two-column directional reveals */
     gsap.utils.toArray('.gleft, .linner > .lleft, .psec-hero-inner > .psec-left').forEach(function (el) {
       gsap.from(el, {
-        opacity: 0, x: -65, duration: 1.05,
-        scrollTrigger: { trigger: el, start: 'top 85%' }
+        opacity: 0, x: -55, duration: 1.0,
+        immediateRender: false,
+        scrollTrigger: { trigger: el, start: 'top 92%' }
       });
     });
     gsap.utils.toArray('.gright, .linner > .lw, .psec-hero-inner > .psec-form-wrap').forEach(function (el) {
       gsap.from(el, {
-        opacity: 0, x: 65, duration: 1.05,
-        scrollTrigger: { trigger: el, start: 'top 85%' }
+        opacity: 0, x: 55, duration: 1.0,
+        immediateRender: false,
+        scrollTrigger: { trigger: el, start: 'top 92%' }
       });
     });
 
     /* 12 — Trust certif band */
     gsap.from('.cband', {
-      opacity: 0, y: 28, duration: 0.9,
-      scrollTrigger: { trigger: '.cband', start: 'top 90%' }
+      opacity: 0, y: 22, duration: 0.9,
+      immediateRender: false,
+      scrollTrigger: { trigger: '.cband', start: 'top 95%' }
     });
 
     /* 13 — ustrip alert bar */
     gsap.from('.ustrip', {
-      opacity: 0, y: -20, duration: 0.7, delay: 0.1
+      opacity: 0, y: -18, duration: 0.7, delay: 0.1
     });
 
     /* 14 — Footer columns */
     var ftCols = gsap.utils.toArray('.ftgrid > div');
     if (ftCols.length) {
       gsap.from(ftCols, {
-        opacity: 0, y: 35, duration: 0.8, stagger: 0.1,
-        scrollTrigger: { trigger: '.ftgrid', start: 'top 95%' }
+        opacity: 0, y: 28, duration: 0.8, stagger: 0.1,
+        immediateRender: false,
+        scrollTrigger: { trigger: '.ftgrid', start: 'top 98%' }
       });
     }
+
+    /* ── SAFETY: recalculate positions after images are loaded ── */
+    window.addEventListener('load', function () {
+      ScrollTrigger.refresh();
+    });
+
+    /* ── SAFETY NET: force-show anything still hidden after 4s ── */
+    setTimeout(function () {
+      document.querySelectorAll('[style*="opacity: 0"],[style*="opacity:0"]').forEach(function (el) {
+        el.style.removeProperty('opacity');
+        el.style.removeProperty('transform');
+        el.style.removeProperty('filter');
+      });
+    }, 4000);
 
     /* 15 — Card 3D tilt (desktop only) */
     if (window.innerWidth > 900) {
