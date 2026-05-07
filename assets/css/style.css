@@ -96,9 +96,9 @@ sup.ast{font-size:8px;vertical-align:super;color:rgba(245,168,0,.75);font-weight
 .fd-prog{position:fixed;top:73px;left:0;height:2px;background:linear-gradient(90deg,var(--y),var(--yl));z-index:1001;width:0%;pointer-events:none;will-change:width}
 
 /* ── SPLIT TEXT — HERO H1 ── */
-/* No CSS opacity:0 — GSAP sets initial state via fromTo at runtime */
-.ht-word{display:inline-block;overflow:hidden;vertical-align:bottom;line-height:inherit}
-.ht-inner{display:inline-block;will-change:transform}
+/* Words wrapped by JS — no overflow:hidden, no opacity, no spacing changes */
+.ht-word{display:inline-block;vertical-align:baseline}
+.ht-inner{display:inline-block}
 
 /* ── SPLIT TEXT — SECTION H2 ── */
 .sh-word{display:inline-block;overflow:hidden;vertical-align:bottom;line-height:inherit}

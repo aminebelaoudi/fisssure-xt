@@ -204,13 +204,37 @@ function lmSub() {
       });
     }
 
-    /* 3 — Hero H1 SplitText stagger */
+    /* 3 — Hero H1 — animate lines directly (no split, preserves span/em yellow colors) */
     var heroH1 = document.querySelector('.hero h1');
     if (heroH1) {
-      splitTextNodes(heroH1, 'ht-word', 'ht-inner');
-      gsap.fromTo(heroH1.querySelectorAll('.ht-inner'),
-        { yPercent: 110, skewY: 4, opacity: 0 },
-        { yPercent: 0, skewY: 0, opacity: 1, duration: 1.2, stagger: 0.075, delay: 0.2, ease: 'power4.out' }
+      /* Wrap each line between <br> tags in a span so GSAP can stagger them */
+      var h1Nodes = Array.from(heroH1.childNodes);
+      heroH1.innerHTML = '';
+      var line = document.createElement('span');
+      line.style.display = 'block';
+      line.style.overflow = 'hidden';
+      var inner = document.createElement('span');
+      inner.style.display = 'block';
+      h1Nodes.forEach(function (node) {
+        if (node.nodeName === 'BR') {
+          line.appendChild(inner);
+          heroH1.appendChild(line);
+          line = document.createElement('span');
+          line.style.display = 'block';
+          line.style.overflow = 'hidden';
+          inner = document.createElement('span');
+          inner.style.display = 'block';
+        } else {
+          inner.appendChild(node.cloneNode(true));
+        }
+      });
+      line.appendChild(inner);
+      heroH1.appendChild(line);
+
+      var inners = heroH1.querySelectorAll('span > span');
+      gsap.fromTo(inners,
+        { yPercent: 105, opacity: 0 },
+        { yPercent: 0, opacity: 1, duration: 1.1, stagger: 0.12, delay: 0.15, ease: 'power4.out' }
       );
     }
 
