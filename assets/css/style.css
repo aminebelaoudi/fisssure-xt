@@ -349,9 +349,9 @@ footer{background:var(--dk2);border-top:4px solid var(--y);padding:56px 32px 28p
 .ftgrid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
 .ftlogo img,.ftlogo svg{height:44px;width:auto;margin-bottom:14px;display:block}
 .ftdesc{font-size:13px;color:rgba(255,255,255,.65);line-height:1.75;margin-bottom:20px;font-weight:300}
-.ftcerts{list-style:none;display:flex;flex-direction:column;gap:8px}
-.ftcert{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,.7)}
-.ftcert::before{content:'✓';width:16px;height:16px;background:rgba(245,168,0,.15);color:var(--y);font-size:9px;font-weight:800;display:flex;align-items:center;justify-content:center;border-radius:2px;flex-shrink:0}
+.ftcerts{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px 16px}
+.ftcert{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,.7);line-height:1.35}
+.ftcert::before{content:'✓';width:16px;height:16px;min-width:16px;background:rgba(245,168,0,.15);color:var(--y);font-size:9px;font-weight:800;display:flex;align-items:center;justify-content:center;border-radius:2px;flex-shrink:0}
 .ftch{font-family:var(--fd);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--y);margin-bottom:18px}
 .ftlinks{list-style:none;display:flex;flex-direction:column;gap:10px}
 .ftlinks li a{font-size:13px;color:rgba(255,255,255,.7);transition:.2s;font-weight:300}

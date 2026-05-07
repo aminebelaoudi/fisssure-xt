@@ -18,10 +18,10 @@
         </div>
         <p class="ftdesc"><?php esc_html_e( 'Spécialistes en installation de drain français, imperméabilisation de fondation et réparation de fissures à Montréal, Laval et sur la Rive-Nord. RBQ 5863-7364-01.', 'fissuredrainxt' ); ?></p>
         <ul class="ftcerts">
-          <li class="ftcert"><?php esc_html_e( 'Permis RBQ 5863-7364-01 en règle', 'fissuredrainxt' ); ?></li>
-          <li class="ftcert"><?php esc_html_e( 'Assurance responsabilité complète', 'fissuredrainxt' ); ?></li>
-          <li class="ftcert"><?php esc_html_e( 'Entrepreneur écoresponsable', 'fissuredrainxt' ); ?></li>
-          <li class="ftcert"><?php esc_html_e( 'Garantie 25 ans', 'fissuredrainxt' ); ?><sup style="font-size:9px;vertical-align:super;color:rgba(245,168,0,.75)">*</sup> <?php esc_html_e( 'transférable', 'fissuredrainxt' ); ?></li>
+          <li class="ftcert"><?php esc_html_e( 'RBQ 5863-7364-01', 'fissuredrainxt' ); ?></li>
+          <li class="ftcert"><?php esc_html_e( 'Assurance responsabilité', 'fissuredrainxt' ); ?></li>
+          <li class="ftcert"><?php esc_html_e( 'Écoresponsable', 'fissuredrainxt' ); ?></li>
+          <li class="ftcert"><?php esc_html_e( 'Garantie 25 ans', 'fissuredrainxt' ); ?><sup style="font-size:9px;vertical-align:super;color:rgba(245,168,0,.75)">*</sup></li>
         </ul>
       </div>
 
