@@ -50,7 +50,7 @@
       <!-- Service 3 -->
       <div class="vcard">
         <div class="vcard-photo">
-          <img src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69cd604e176107c821ee5587.png" alt="<?php esc_attr_e( 'Réparation de fissures de fondation', 'fissuredrainxt' ); ?>">
+          <img src="https://fissuredrainxt.com/wp-content/uploads/2026/05/fissurefondation-1-scaled.jpg" alt="<?php esc_attr_e( 'Réparation de fissures de fondation', 'fissuredrainxt' ); ?>">
         </div>
         <span class="vnum">03</span>
         <h3 class="vt"><?php esc_html_e( 'Réparation de fissures de fondation', 'fissuredrainxt' ); ?></h3>
