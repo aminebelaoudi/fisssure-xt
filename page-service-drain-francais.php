@@ -11,43 +11,12 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 get_header();
 
-// Custom inline styles for this template
 function fdxt_drain_service_styles() {
   ?>
   <style>
     .prgrid--5{grid-template-columns:repeat(5,1fr)}
     @media(max-width:1100px){.prgrid--5{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:480px){.prgrid--5{grid-template-columns:1fr}}
-    .specs-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
-    .specs-card{padding:40px}
-    .specs-card.old{background:var(--gray7);border-right:2px solid var(--gray6)}
-    .specs-card.new{background:var(--w)}
-    .specs-icon{font-size:36px;margin-bottom:12px;display:block}
-    .specs-label{font-family:var(--fd);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gray4);margin-bottom:4px}
-    .specs-name{font-family:var(--fd);font-size:26px;font-weight:900;text-transform:uppercase;color:var(--dk);line-height:1.1;margin-bottom:16px}
-    .specs-item{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--gray6);font-size:13px;color:var(--gray2);line-height:1.5}
-    .specs-item:last-child{border:none}
-    .specs-x{color:#c0392b;font-weight:800;flex-shrink:0;margin-top:1px}
-    .specs-check{color:var(--y);font-weight:800;flex-shrink:0;margin-top:1px}
-    .specs-badge{display:inline-block;background:var(--y);color:var(--dk);font-family:var(--fd);font-size:10px;font-weight:800;padding:3px 9px;border-radius:2px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
-    .sigrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    .sicard{display:flex;align-items:flex-start;gap:16px;background:var(--w);border:1px solid var(--gray6);padding:28px;border-radius:var(--r);transition:.2s}
-    .sicard:hover{border-color:var(--y);box-shadow:0 4px 20px rgba(245,168,0,.1)}
-    .siicon{width:48px;height:48px;min-width:48px;background:var(--gray7);display:flex;align-items:center;justify-content:center;font-size:20px;border-radius:var(--r)}
-    .sicard h4{font-family:var(--fd);font-size:17px;font-weight:800;text-transform:uppercase;letter-spacing:.02em;color:var(--dk);margin-bottom:4px;line-height:1.2}
-    .sicard p{font-size:13px;color:var(--gray3);line-height:1.6;font-weight:300}
-    .strip-prix{background:var(--dk);padding:40px 32px;text-align:center;border-top:3px solid var(--y);border-bottom:3px solid var(--y)}
-    .strip-prix-inner{max-width:var(--max-w);margin:0 auto;display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap}
-    .strip-prix .st{font-family:var(--fd);font-size:14px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--y)}
-    .strip-prix .spn{font-family:var(--fd);font-size:48px;font-weight:900;color:var(--w);line-height:1;letter-spacing:-.02em}
-    .strip-prix .spt{font-family:var(--fd);font-size:14px;font-weight:600;text-transform:uppercase;color:rgba(255,255,255,.55);letter-spacing:.04em;margin-top:4px}
-    .strip-prix .spc{font-size:13px;color:rgba(255,255,255,.4);max-width:360px;line-height:1.6;font-weight:300}
-    @media(max-width:768px){
-      .specs-grid{grid-template-columns:1fr;gap:12px}
-      .specs-card.old{border-right:none;border-bottom:2px solid var(--gray6)}
-      .sigrid{grid-template-columns:1fr;gap:12px}
-      .spc{max-width:none}
-    }
   </style>
   <?php
 }
@@ -89,19 +58,28 @@ add_action( 'wp_head', 'fdxt_drain_service_styles' );
   </div>
 </section>
 
-<!-- ═══ PRIX STRIP ═══ -->
-<div class="strip-prix">
-  <div class="strip-prix-inner">
-    <div>
-      <div class="st"><?php esc_html_e( 'À partir de', 'fissuredrainxt' ); ?></div>
-      <div><span class="spn">160</span><span class="spt" style="font-size:18px;color:var(--y)"> $</span><span class="spt"> /pi.lin.</span></div>
-    </div>
-    <div>
-      <div class="spc"><?php esc_html_e( 'Installation complète incluant excavation, matériaux, main-d\'œuvre certifiée RBQ et remblayage. Soumission gratuite et détaillée.', 'fissuredrainxt' ); ?></div>
-    </div>
-    <div>
-      <a href="/soumission" class="nbtn" style="background:var(--y);color:var(--dk);padding:14px 32px;font-size:15px;letter-spacing:.08em"><?php esc_html_e( 'Obtenir ma soumission →', 'fissuredrainxt' ); ?></a>
-    </div>
+<!-- ═══ CERTIF BAND ═══ -->
+<div class="cband">
+  <div class="cinner">
+    <div class="citem"><img class="cico cico-lg" src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69d419d24ba93ac572be3c77.png" alt="" width="26" height="26"><?php esc_html_e( 'RBQ 5863-7364-01', 'fissuredrainxt' ); ?></div>
+    <div class="csep" aria-hidden="true"></div>
+    <div class="citem"><img class="cico cico-lg" src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69a7b543618c8dbaeda9de00.png" alt="" width="26" height="26"><?php esc_html_e( 'Garantie 25 ans', 'fissuredrainxt' ); ?><sup style="font-size:9px;vertical-align:super;color:rgba(245,168,0,.75)">*</sup> <?php esc_html_e( 'transférable', 'fissuredrainxt' ); ?></div>
+    <div class="csep" aria-hidden="true"></div>
+    <div class="citem"><svg class="cico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg><?php esc_html_e( 'Écoresponsable', 'fissuredrainxt' ); ?></div>
+    <div class="csep" aria-hidden="true"></div>
+    <div class="citem"><img class="cico" src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69a8d01c7bdf384a29516b35.svg" alt="" width="26" height="26"><?php esc_html_e( 'Intervention rapide', 'fissuredrainxt' ); ?></div>
+    <div class="csep" aria-hidden="true"></div>
+    <div class="citem"><svg class="cico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9,12 11,14 15,10"/></svg><?php esc_html_e( 'Assurance complète', 'fissuredrainxt' ); ?></div>
+  </div>
+</div>
+
+<!-- ═══ STATS ═══ -->
+<div class="sband">
+  <div class="sgrid cont">
+    <div><div><span class="sn">25</span><span class="su"> ans</span></div><div class="sl"><?php esc_html_e( 'de garantie', 'fissuredrainxt' ); ?></div></div>
+    <div><div><span class="sn">500</span><span class="su">+</span></div><div class="sl"><?php esc_html_e( 'projets complétés', 'fissuredrainxt' ); ?></div></div>
+    <div><div><span class="sn">48</span><span class="su">h</span></div><div class="sl"><?php esc_html_e( 'délai d\'intervention', 'fissuredrainxt' ); ?></div></div>
+    <div><div><span class="sn">5</span><span class="su">★</span></div><div class="sl"><?php esc_html_e( 'satisfaction client', 'fissuredrainxt' ); ?></div></div>
   </div>
 </div>
 
@@ -146,48 +124,36 @@ add_action( 'wp_head', 'fdxt_drain_service_styles' );
       <div class="sline c"></div>
       <p class="sp" style="margin:18px auto 0"><?php esc_html_e( 'Voici les indicateurs les plus fréquents d\'un drain français qui ne remplit plus son rôle.', 'fissuredrainxt' ); ?></p>
     </div>
-    <div class="sigrid">
-      <div class="sicard">
-        <div class="siicon">💧</div>
-        <div>
-          <h4><?php esc_html_e( 'Infiltration d\'eau au sous-sol', 'fissuredrainxt' ); ?></h4>
-          <p><?php esc_html_e( 'De l\'eau qui apparaît sur le plancher ou remonte par les fissures du béton après une pluie — signe que le drain ne capte plus l\'eau efficacement.', 'fissuredrainxt' ); ?></p>
-        </div>
+    <div class="pgrid">
+      <div class="pcard">
+        <div class="pacc"></div>
+        <h4 class="pt"><?php esc_html_e( 'Infiltration d\'eau au sous-sol', 'fissuredrainxt' ); ?></h4>
+        <p class="pd"><?php esc_html_e( 'De l\'eau qui apparaît sur le plancher ou remonte par les fissures du béton après une pluie — signe que le drain ne capte plus l\'eau efficacement.', 'fissuredrainxt' ); ?></p>
       </div>
-      <div class="sicard">
-        <div class="siicon">🧱</div>
-        <div>
-          <h4><?php esc_html_e( 'Humidité chronique des murs', 'fissuredrainxt' ); ?></h4>
-          <p><?php esc_html_e( 'Des taches d\'humidité ou d\'efflorescence blanche sur les murs de fondation intérieurs indiquent une infiltration persistante non évacuée.', 'fissuredrainxt' ); ?></p>
-        </div>
+      <div class="pcard">
+        <div class="pacc"></div>
+        <h4 class="pt"><?php esc_html_e( 'Humidité chronique des murs', 'fissuredrainxt' ); ?></h4>
+        <p class="pd"><?php esc_html_e( 'Des taches d\'humidité ou d\'efflorescence blanche sur les murs de fondation intérieurs indiquent une infiltration persistante non évacuée.', 'fissuredrainxt' ); ?></p>
       </div>
-      <div class="sicard">
-        <div class="siicon">👃</div>
-        <div>
-          <h4><?php esc_html_e( 'Odeur de moisissure', 'fissuredrainxt' ); ?></h4>
-          <p><?php esc_html_e( 'Une odeur musquée persistante dans le sous-sol révèle que l\'humidité stagne et que des moisissures commencent à se développer.', 'fissuredrainxt' ); ?></p>
-        </div>
+      <div class="pcard">
+        <div class="pacc"></div>
+        <h4 class="pt"><?php esc_html_e( 'Odeur de moisissure', 'fissuredrainxt' ); ?></h4>
+        <p class="pd"><?php esc_html_e( 'Une odeur musquée persistante dans le sous-sol révèle que l\'humidité stagne et que des moisissures commencent à se développer.', 'fissuredrainxt' ); ?></p>
       </div>
-      <div class="sicard">
-        <div class="siicon">🌊</div>
-        <div>
-          <h4><?php esc_html_e( 'Sol détrempé autour de la maison', 'fissuredrainxt' ); ?></h4>
-          <p><?php esc_html_e( 'Des zones boueuses ou constamment humides près de la fondation à l\'extérieur signalent un refoulement ou une rupture du drain.', 'fissuredrainxt' ); ?></p>
-        </div>
+      <div class="pcard">
+        <div class="pacc"></div>
+        <h4 class="pt"><?php esc_html_e( 'Sol détrempé autour de la maison', 'fissuredrainxt' ); ?></h4>
+        <p class="pd"><?php esc_html_e( 'Des zones boueuses ou constamment humides près de la fondation à l\'extérieur signalent un refoulement ou une rupture du drain.', 'fissuredrainxt' ); ?></p>
       </div>
-      <div class="sicard">
-        <div class="siicon">🔴</div>
-        <div>
-          <h4><?php esc_html_e( 'Fissures de fondation', 'fissuredrainxt' ); ?></h4>
-          <p><?php esc_html_e( 'Les fissures horizontales ou verticales dans le béton sont aggravées par la pression hydraulique que le drain devrait normalement soulager.', 'fissuredrainxt' ); ?></p>
-        </div>
+      <div class="pcard">
+        <div class="pacc"></div>
+        <h4 class="pt"><?php esc_html_e( 'Fissures de fondation', 'fissuredrainxt' ); ?></h4>
+        <p class="pd"><?php esc_html_e( 'Les fissures horizontales ou verticales dans le béton sont aggravées par la pression hydraulique que le drain devrait normalement soulager.', 'fissuredrainxt' ); ?></p>
       </div>
-      <div class="sicard">
-        <div class="siicon">🏚️</div>
-        <div>
-          <h4><?php esc_html_e( 'Drain en argile d\'avant 1980', 'fissuredrainxt' ); ?></h4>
-          <p><?php esc_html_e( 'Les drains en argile se fissurent, s\'effondrent et se bouchent avec le temps. Si votre maison a plus de 40 ans, une inspection s\'impose.', 'fissuredrainxt' ); ?></p>
-        </div>
+      <div class="pcard">
+        <div class="pacc"></div>
+        <h4 class="pt"><?php esc_html_e( 'Drain en argile d\'avant 1980', 'fissuredrainxt' ); ?></h4>
+        <p class="pd"><?php esc_html_e( 'Les drains en argile se fissurent, s\'effondrent et se bouchent avec le temps. Si votre maison a plus de 40 ans, une inspection s\'impose.', 'fissuredrainxt' ); ?></p>
       </div>
     </div>
   </div>
@@ -226,36 +192,49 @@ add_action( 'wp_head', 'fdxt_drain_service_styles' );
   </div>
 </section>
 
-<!-- ═══ COMPARAISON MATÉRIAUX ═══ -->
-<section class="sec sec-alt">
+<!-- ═══ SERVICES INCLUS ═══ -->
+<section class="sec">
   <div class="cont">
     <div class="shead c">
-      <span class="stag dk"><?php esc_html_e( 'Qualité de matériaux', 'fissuredrainxt' ); ?></span>
-      <h2 class="sh"><?php esc_html_e( 'Ancien drain vs', 'fissuredrainxt' ); ?><br><span style="color:var(--y)"><?php esc_html_e( 'normes actuelles', 'fissuredrainxt' ); ?></span></h2>
+      <span class="stag dk"><?php esc_html_e( 'Ce qui est inclus', 'fissuredrainxt' ); ?></span>
+      <h2 class="sh"><?php esc_html_e( 'Installation complète', 'fissuredrainxt' ); ?><br><span style="color:var(--y)"><?php esc_html_e( 'clé en main', 'fissuredrainxt' ); ?></span></h2>
       <div class="sline c"></div>
-      <p class="sp" style="margin:18px auto 0"><?php esc_html_e( 'Les matériaux utilisés il y a 30 à 50 ans ne répondent plus aux normes actuelles. Voici pourquoi un remplacement fait une différence durable.', 'fissuredrainxt' ); ?></p>
+      <p class="sp" style="margin:18px auto 0"><?php esc_html_e( 'Tout ce que comprend notre service d\'installation ou de réparation de drain français — sans frais cachés, sans surprise.', 'fissuredrainxt' ); ?></p>
     </div>
-    <div class="specs-grid">
-      <div class="specs-card old">
-        <span class="specs-icon">❌</span>
-        <div class="specs-label"><?php esc_html_e( 'Ancien drain (1980 et avant)', 'fissuredrainxt' ); ?></div>
-        <div class="specs-name"><?php esc_html_e( 'Drain en argile', 'fissuredrainxt' ); ?></div>
-        <div class="specs-item"><span class="specs-x">✕</span><?php esc_html_e( 'Tuyau en argile cuite — se fissure avec le gel-dégel', 'fissuredrainxt' ); ?></div>
-        <div class="specs-item"><span class="specs-x">✕</span><?php esc_html_e( 'Pas de géotextile anti-racines', 'fissuredrainxt' ); ?></div>
-        <div class="specs-item"><span class="specs-x">✕</span><?php esc_html_e( 'Pierre drainante non calibrée, s\'envase avec le temps', 'fissuredrainxt' ); ?></div>
-        <div class="specs-item"><span class="specs-x">✕</span><?php esc_html_e( 'Durée de vie : 30–50 ans (souvent déjà dépassée)', 'fissuredrainxt' ); ?></div>
-        <div class="specs-item"><span class="specs-x">✕</span><?php esc_html_e( 'Sections effondrées impossibles à diagnostiquer sans caméra', 'fissuredrainxt' ); ?></div>
+    <div class="vgrid">
+      <div class="vcard">
+        <div class="vcard-photo">
+          <img src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69fbb4c24ef91f2f59390ce7.png" alt="<?php esc_attr_e( 'Installation de drain français', 'fissuredrainxt' ); ?>">
+          <span class="vcard-photo-tag"><?php esc_html_e( 'À partir 160 $/pi.lin.', 'fissuredrainxt' ); ?></span>
+        </div>
+        <span class="vnum">01</span>
+        <h3 class="vt"><?php esc_html_e( 'Travaux inclus', 'fissuredrainxt' ); ?></h3>
+        <ul class="vlist">
+          <li><span class="varr">✓</span><?php esc_html_e( 'Inspection par caméra HD avant travaux', 'fissuredrainxt' ); ?></li>
+          <li><span class="varr">✓</span><?php esc_html_e( 'Excavation complète du périmètre de fondation', 'fissuredrainxt' ); ?></li>
+          <li><span class="varr">✓</span><?php esc_html_e( 'Tuyau perforé triple paroi avec géotextile', 'fissuredrainxt' ); ?></li>
+          <li><span class="varr">✓</span><?php esc_html_e( 'Pierre drainante lavée et filtrante', 'fissuredrainxt' ); ?></li>
+          <li><span class="varr">✓</span><?php esc_html_e( 'Raccordement au réseau ou puisard', 'fissuredrainxt' ); ?></li>
+          <li><span class="varr">✓</span><?php esc_html_e( 'Remblayage et restauration du terrain', 'fissuredrainxt' ); ?></li>
+          <li><span class="varr">✓</span><?php esc_html_e( 'Rapport vidéo avant/après', 'fissuredrainxt' ); ?></li>
+        </ul>
+        <span class="vbdg"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg> <?php esc_html_e( 'Garantie 25 ans', 'fissuredrainxt' ); ?><sup style="font-size:9px;vertical-align:super">*</sup></span>
       </div>
-      <div class="specs-card new">
-        <div class="specs-badge"><?php esc_html_e( 'Installé par Fissure et Drain XT', 'fissuredrainxt' ); ?></div>
-        <span class="specs-icon">✅</span>
-        <div class="specs-label"><?php esc_html_e( 'Nouveau drain (normes RBQ)', 'fissuredrainxt' ); ?></div>
-        <div class="specs-name"><?php esc_html_e( 'PVC perforé triple paroi', 'fissuredrainxt' ); ?></div>
-        <div class="specs-item"><span class="specs-check">✓</span><?php esc_html_e( 'Tuyau PVC triple paroi — résistant au gel et à la pression', 'fissuredrainxt' ); ?></div>
-        <div class="specs-item"><span class="specs-check">✓</span><?php esc_html_e( 'Géotextile anti-racines enveloppant le drain', 'fissuredrainxt' ); ?></div>
-        <div class="specs-item"><span class="specs-check">✓</span><?php esc_html_e( 'Pierre drainante lavée calibrée ½–¾ po', 'fissuredrainxt' ); ?></div>
-        <div class="specs-item"><span class="specs-check">✓</span><?php esc_html_e( 'Garantie de 25 ans incluse et transférable', 'fissuredrainxt' ); ?></div>
-        <div class="specs-item"><span class="specs-check">✓</span><?php esc_html_e( 'Rapport vidéo avant/après remis au client', 'fissuredrainxt' ); ?></div>
+      <div class="vcard">
+        <div class="vcard-photo">
+          <img src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69cd5f090f0dab5b9ded3c07.png" alt="<?php esc_attr_e( 'Services complémentaires', 'fissuredrainxt' ); ?>">
+        </div>
+        <span class="vnum">02</span>
+        <h3 class="vt"><?php esc_html_e( 'Services complémentaires', 'fissuredrainxt' ); ?></h3>
+        <ul class="vlist">
+          <li><span class="varr">→</span><?php esc_html_e( 'Imperméabilisation de fondation (membrane Delta-MS)', 'fissuredrainxt' ); ?></li>
+          <li><span class="varr">→</span><?php esc_html_e( 'Réparation de fissures par injection époxy', 'fissuredrainxt' ); ?></li>
+          <li><span class="varr">→</span><?php esc_html_e( 'Drain de toit et gouttières', 'fissuredrainxt' ); ?></li>
+          <li><span class="varr">→</span><?php esc_html_e( 'Pompe de puisard avec batterie de secours', 'fissuredrainxt' ); ?></li>
+          <li><span class="varr">→</span><?php esc_html_e( 'Gazon en rouleau pour finition premium', 'fissuredrainxt' ); ?></li>
+          <li><span class="varr">→</span><?php esc_html_e( 'Inspection pré-achat / pré-vente', 'fissuredrainxt' ); ?></li>
+        </ul>
+        <span class="vbdg" style="background:var(--dk);color:var(--w)"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg> <?php esc_html_e( 'Devis personnalisé', 'fissuredrainxt' ); ?></span>
       </div>
     </div>
   </div>
@@ -300,7 +279,7 @@ add_action( 'wp_head', 'fdxt_drain_service_styles' );
       </div>
       <div class="fitem">
         <div class="fq" onclick="fT(this)"><?php esc_html_e( 'Combien coûte l\'installation d\'un drain français ?', 'fissuredrainxt' ); ?><div class="ficon">+</div></div>
-        <div class="fa"><?php esc_html_e( 'Le coût varie selon la superficie à excaver, l\'accessibilité du périmètre et le type de sol. À titre indicatif, comptez à partir de 160 $/pi.lin. pour une installation complète incluant excavation, matériaux, main-d\'œuvre et remblayage. La soumission détaillée est gratuite et sans engagement.', 'fissuredrainxt' ); ?></div>
+        <div class="fa"><?php esc_html_e( 'Le coût varie selon la superficie à excaver, l\'accessibilité du périmètre et le type de sol. À titre indicatif, comptez à partir de 160 $/pi.lin. pour une installation complète incluant excavation, matériaux, main-d\'œuvre et remblayage.', 'fissuredrainxt' ); ?></div>
       </div>
       <div class="fitem">
         <div class="fq" onclick="fT(this)"><?php esc_html_e( 'Quelle est la durée des travaux ?', 'fissuredrainxt' ); ?><div class="ficon">+</div></div>
@@ -308,7 +287,7 @@ add_action( 'wp_head', 'fdxt_drain_service_styles' );
       </div>
       <div class="fitem">
         <div class="fq" onclick="fT(this)"><?php esc_html_e( 'Peut-on réparer un drain sans excavation ?', 'fissuredrainxt' ); ?><div class="ficon">+</div></div>
-        <div class="fa"><?php esc_html_e( 'Dans certains cas, un drain obstrué peut être nettoyé par hydro-jet ou par caméra avec outil de coupe. Cependant, si le drain est effondré, fracturé ou en argile, l\'excavation et le remplacement complet sont nécessaires. L\'inspection détermine la meilleure approche.', 'fissuredrainxt' ); ?></div>
+        <div class="fa"><?php esc_html_e( 'Dans certains cas, un drain obstrué peut être nettoyé par hydro-jet ou par caméra avec outil de coupe. Cependant, si le drain est effondré, fracturé ou en argile, l\'excavation et le remplacement complet sont nécessaires.', 'fissuredrainxt' ); ?></div>
       </div>
       <div class="fitem">
         <div class="fq" onclick="fT(this)"><?php esc_html_e( 'La garantie est-elle transférable si je vends ma maison ?', 'fissuredrainxt' ); ?><div class="ficon">+</div></div>
@@ -320,7 +299,7 @@ add_action( 'wp_head', 'fdxt_drain_service_styles' );
       </div>
       <div class="fitem">
         <div class="fq" onclick="fT(this)"><?php esc_html_e( 'Intervenez-vous en hiver ?', 'fissuredrainxt' ); ?><div class="ficon">+</div></div>
-        <div class="fa"><?php esc_html_e( 'Oui, nous intervenons à l\'année. Les travaux d\'excavation en hiver sont possibles avec l\'équipement adapté. Les délais peuvent être légèrement allongés selon les conditions, mais nous maintenons notre engagement de qualité et de propreté du chantier.', 'fissuredrainxt' ); ?></div>
+        <div class="fa"><?php esc_html_e( 'Oui, nous intervenons à l\'année. Les travaux d\'excavation en hiver sont possibles avec l\'équipement adapté. Les délais peuvent être légèrement allongés selon les conditions, mais nous maintenons notre engagement de qualité.', 'fissuredrainxt' ); ?></div>
       </div>
     </div>
   </div>
@@ -343,14 +322,14 @@ add_action( 'wp_head', 'fdxt_drain_service_styles' );
           <div class="tmav">FT</div>
           <div>
             <div class="tmname"><?php esc_html_e( 'François T.', 'fissuredrainxt' ); ?></div>
-            <div class="tmcity"><?php esc_html_e( 'Montréal, Notre-Dame-de-Grâce', 'fissuredrainxt' ); ?></div>
+            <div class="tmcity"><?php esc_html_e( 'Montréal, NDG', 'fissuredrainxt' ); ?></div>
           </div>
         </div>
       </div>
       <div class="tmcard">
         <span class="tmtag"><?php esc_html_e( 'Drain français', 'fissuredrainxt' ); ?></span>
         <div class="tmstars">★★★★★</div>
-        <p class="tmtxt"><?php esc_html_e( '"Maison des années 70 avec drain en argile effondré. Remplacement complet en 3 jours. Terrain remis en état impeccable. Le rapport vidéo avant/après est très rassurant. Merci à toute l\'équipe."', 'fissuredrainxt' ); ?></p>
+        <p class="tmtxt"><?php esc_html_e( '"Maison des années 70 avec drain en argile effondré. Remplacement complet en 3 jours. Terrain remis en état impeccable. Le rapport vidéo avant/après est très rassurant."', 'fissuredrainxt' ); ?></p>
         <div class="tmauth">
           <div class="tmav">JR</div>
           <div>
