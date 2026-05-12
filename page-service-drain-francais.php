@@ -20,7 +20,7 @@ function fdxt_drain_service_styles() {
     @media(max-width:480px){.prgrid--5{grid-template-columns:1fr}}
     .specs-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
     .specs-card{padding:40px}
-    .specs-card.old{background:var(--gray7);border-right:1px solid var(--gray6)}
+    .specs-card.old{background:var(--gray7);border-right:2px solid var(--gray6)}
     .specs-card.new{background:var(--w)}
     .specs-icon{font-size:36px;margin-bottom:12px;display:block}
     .specs-label{font-family:var(--fd);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gray4);margin-bottom:4px}
@@ -43,8 +43,10 @@ function fdxt_drain_service_styles() {
     .strip-prix .spt{font-family:var(--fd);font-size:14px;font-weight:600;text-transform:uppercase;color:rgba(255,255,255,.55);letter-spacing:.04em;margin-top:4px}
     .strip-prix .spc{font-size:13px;color:rgba(255,255,255,.4);max-width:360px;line-height:1.6;font-weight:300}
     @media(max-width:768px){
-      .specs-grid,.sigrid{grid-template-columns:1fr}
-      .sigrid{gap:12px}
+      .specs-grid{grid-template-columns:1fr;gap:12px}
+      .specs-card.old{border-right:none;border-bottom:2px solid var(--gray6)}
+      .sigrid{grid-template-columns:1fr;gap:12px}
+      .spc{max-width:none}
     }
   </style>
   <?php
