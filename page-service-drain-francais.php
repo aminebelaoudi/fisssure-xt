@@ -75,7 +75,17 @@ function fdxt_drain_service_styles() {
     .pdt-cta .psec-cta-btn-primary:hover{background:var(--yl)}
     .pdt-cta .psec-cta-btn-secondary{border-color:rgba(255,255,255,.3);color:var(--w)}
     .pdt-cta .psec-cta-btn-secondary:hover{border-color:var(--y);color:var(--y)}
-    .pdt-cta .psec-cta-btn-secondary svg{stroke:currentColor}
+    /* 5. Galerie 3 photos */
+    .pgal{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+    .pgal-item{position:relative;overflow:hidden;aspect-ratio:3/4}
+    .pgal-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.22,.61,.36,1)}
+    .pgal-item:hover img{transform:scale(1.05)}
+    .pgal-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,26,26,.85) 0%,rgba(26,26,26,.1) 55%,transparent 100%)}
+    .pgal-content{position:absolute;bottom:0;left:0;right:0;padding:28px 24px}
+    .pgal-tag{display:inline-block;background:var(--y);color:var(--dk);font-family:var(--fd);font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:2px;margin-bottom:10px}
+    .pgal-title{font-family:var(--fd);font-size:22px;font-weight:900;text-transform:uppercase;color:var(--w);line-height:1.1;margin-bottom:6px}
+    .pgal-desc{font-size:12px;color:rgba(255,255,255,.6);line-height:1.55;font-weight:300}
+    @media(max-width:768px){.pgal{grid-template-columns:1fr}.pgal-item{aspect-ratio:16/9}}
   </style>
   <?php
 }
@@ -251,49 +261,44 @@ add_action( 'wp_head', 'fdxt_drain_service_styles' );
   </div>
 </section>
 
-<!-- ═══ SERVICES INCLUS ═══ -->
+<!-- ═══ GALERIE PHOTOS ═══ -->
 <section class="sec">
   <div class="cont">
     <div class="shead c">
-      <span class="stag dk"><?php esc_html_e( 'Ce qui est inclus', 'fissuredrainxt' ); ?></span>
-      <h2 class="sh"><?php esc_html_e( 'Installation complète', 'fissuredrainxt' ); ?><br><span style="color:var(--y)"><?php esc_html_e( 'clé en main', 'fissuredrainxt' ); ?></span></h2>
+      <span class="stag dk"><?php esc_html_e( 'Nos chantiers', 'fissuredrainxt' ); ?></span>
+      <h2 class="sh"><?php esc_html_e( 'Le travail parle', 'fissuredrainxt' ); ?><br><span style="color:var(--y)"><?php esc_html_e( 'de lui-même', 'fissuredrainxt' ); ?></span></h2>
       <div class="sline c"></div>
-      <p class="sp" style="margin:18px auto 0"><?php esc_html_e( 'Tout ce que comprend notre service d\'installation ou de réparation de drain français — sans frais cachés, sans surprise.', 'fissuredrainxt' ); ?></p>
     </div>
-    <div class="vgrid">
-      <div class="vcard">
-        <div class="vcard-photo">
-          <img src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69fbb4c24ef91f2f59390ce7.png" alt="<?php esc_attr_e( 'Installation de drain français', 'fissuredrainxt' ); ?>">
-          <span class="vcard-photo-tag"><?php esc_html_e( 'À partir 160 $/pi.lin.', 'fissuredrainxt' ); ?></span>
-        </div>
-        <span class="vnum">01</span>
-        <h3 class="vt"><?php esc_html_e( 'Travaux inclus', 'fissuredrainxt' ); ?></h3>
-        <ul class="vlist">
-          <li><span class="varr">✓</span><?php esc_html_e( 'Inspection par caméra HD avant travaux', 'fissuredrainxt' ); ?></li>
-          <li><span class="varr">✓</span><?php esc_html_e( 'Excavation complète du périmètre de fondation', 'fissuredrainxt' ); ?></li>
-          <li><span class="varr">✓</span><?php esc_html_e( 'Tuyau perforé triple paroi avec géotextile', 'fissuredrainxt' ); ?></li>
-          <li><span class="varr">✓</span><?php esc_html_e( 'Pierre drainante lavée et filtrante', 'fissuredrainxt' ); ?></li>
-          <li><span class="varr">✓</span><?php esc_html_e( 'Raccordement au réseau ou puisard', 'fissuredrainxt' ); ?></li>
-          <li><span class="varr">✓</span><?php esc_html_e( 'Remblayage et restauration du terrain', 'fissuredrainxt' ); ?></li>
-          <li><span class="varr">✓</span><?php esc_html_e( 'Rapport vidéo avant/après', 'fissuredrainxt' ); ?></li>
-        </ul>
-        <span class="vbdg"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg> <?php esc_html_e( 'Garantie 25 ans', 'fissuredrainxt' ); ?><sup style="font-size:9px;vertical-align:super">*</sup></span>
+  </div>
+  <div class="pgal">
+    <div class="pgal-item">
+      <img src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69fbb4c24ef91f2f59390ce7.png"
+           alt="<?php esc_attr_e( 'Installation de drain français — excavation et pose du tuyau perforé', 'fissuredrainxt' ); ?>">
+      <div class="pgal-overlay"></div>
+      <div class="pgal-content">
+        <span class="pgal-tag"><?php esc_html_e( 'Installation', 'fissuredrainxt' ); ?></span>
+        <h3 class="pgal-title"><?php esc_html_e( 'Pose du drain', 'fissuredrainxt' ); ?></h3>
+        <p class="pgal-desc"><?php esc_html_e( 'Tuyau perforé triple paroi, géotextile anti-racines et pierre drainante calibrée', 'fissuredrainxt' ); ?></p>
       </div>
-      <div class="vcard">
-        <div class="vcard-photo">
-          <img src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69cd5f090f0dab5b9ded3c07.png" alt="<?php esc_attr_e( 'Services complémentaires', 'fissuredrainxt' ); ?>">
-        </div>
-        <span class="vnum">02</span>
-        <h3 class="vt"><?php esc_html_e( 'Services complémentaires', 'fissuredrainxt' ); ?></h3>
-        <ul class="vlist">
-          <li><span class="varr">→</span><?php esc_html_e( 'Imperméabilisation de fondation (membrane Delta-MS)', 'fissuredrainxt' ); ?></li>
-          <li><span class="varr">→</span><?php esc_html_e( 'Réparation de fissures par injection époxy', 'fissuredrainxt' ); ?></li>
-          <li><span class="varr">→</span><?php esc_html_e( 'Drain de toit et gouttières', 'fissuredrainxt' ); ?></li>
-          <li><span class="varr">→</span><?php esc_html_e( 'Pompe de puisard avec batterie de secours', 'fissuredrainxt' ); ?></li>
-          <li><span class="varr">→</span><?php esc_html_e( 'Gazon en rouleau pour finition premium', 'fissuredrainxt' ); ?></li>
-          <li><span class="varr">→</span><?php esc_html_e( 'Inspection pré-achat / pré-vente', 'fissuredrainxt' ); ?></li>
-        </ul>
-        <span class="vbdg" style="background:var(--dk);color:var(--w)"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg> <?php esc_html_e( 'Devis personnalisé', 'fissuredrainxt' ); ?></span>
+    </div>
+    <div class="pgal-item">
+      <img src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69cd604e65dd94041a48fe92.jpg"
+           alt="<?php esc_attr_e( 'Excavation du périmètre de fondation pour drain français', 'fissuredrainxt' ); ?>">
+      <div class="pgal-overlay"></div>
+      <div class="pgal-content">
+        <span class="pgal-tag"><?php esc_html_e( 'Excavation', 'fissuredrainxt' ); ?></span>
+        <h3 class="pgal-title"><?php esc_html_e( 'Fondation dégagée', 'fissuredrainxt' ); ?></h3>
+        <p class="pgal-desc"><?php esc_html_e( 'Dégagement complet du périmètre — terrain protégé, remblayage inclus', 'fissuredrainxt' ); ?></p>
+      </div>
+    </div>
+    <div class="pgal-item">
+      <img src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69cd5f090f0dab5b9ded3c07.png"
+           alt="<?php esc_attr_e( 'Inspection par caméra HD du drain français', 'fissuredrainxt' ); ?>">
+      <div class="pgal-overlay"></div>
+      <div class="pgal-content">
+        <span class="pgal-tag"><?php esc_html_e( 'Inspection', 'fissuredrainxt' ); ?></span>
+        <h3 class="pgal-title"><?php esc_html_e( 'Caméra HD incluse', 'fissuredrainxt' ); ?></h3>
+        <p class="pgal-desc"><?php esc_html_e( 'Diagnostic précis avant et après travaux — rapport vidéo remis au client', 'fissuredrainxt' ); ?></p>
       </div>
     </div>
   </div>
