@@ -9,8 +9,6 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-get_header();
-
 function fdxt_drain_service_styles() {
   ?>
   <style>
@@ -90,6 +88,8 @@ function fdxt_drain_service_styles() {
   <?php
 }
 add_action( 'wp_head', 'fdxt_drain_service_styles' );
+
+get_header();
 ?>
 
 <!-- ═══ URGENCY STRIP ═══ -->
