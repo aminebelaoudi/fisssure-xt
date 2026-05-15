@@ -76,16 +76,16 @@ function fdxt_drain_service_styles() {
     .pdt-cta .psec-cta-btn-secondary{border-color:rgba(255,255,255,.3);color:var(--w)}
     .pdt-cta .psec-cta-btn-secondary:hover{border-color:var(--y);color:var(--y)}
     /* 5. Galerie 3 photos */
-    .pgal{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
-    .pgal-item{position:relative;overflow:hidden;aspect-ratio:3/4}
+    .pgal{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:48px}
+    .pgal-item{position:relative;overflow:hidden;aspect-ratio:3/4;cursor:pointer}
     .pgal-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.22,.61,.36,1)}
     .pgal-item:hover img{transform:scale(1.05)}
-    .pgal-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,26,26,.85) 0%,rgba(26,26,26,.1) 55%,transparent 100%)}
+    .pgal-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,26,26,.88) 0%,rgba(26,26,26,.08) 55%,transparent 100%)}
     .pgal-content{position:absolute;bottom:0;left:0;right:0;padding:28px 24px}
     .pgal-tag{display:inline-block;background:var(--y);color:var(--dk);font-family:var(--fd);font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:2px;margin-bottom:10px}
     .pgal-title{font-family:var(--fd);font-size:22px;font-weight:900;text-transform:uppercase;color:var(--w);line-height:1.1;margin-bottom:6px}
-    .pgal-desc{font-size:12px;color:rgba(255,255,255,.6);line-height:1.55;font-weight:300}
-    @media(max-width:768px){.pgal{grid-template-columns:1fr}.pgal-item{aspect-ratio:16/9}}
+    .pgal-desc{font-size:12px;color:rgba(255,255,255,.65);line-height:1.55;font-weight:300}
+    @media(max-width:768px){.pgal{grid-template-columns:1fr;margin-top:32px}.pgal-item{aspect-ratio:16/9}}
   </style>
   <?php
 }
@@ -172,8 +172,8 @@ add_action( 'wp_head', 'fdxt_drain_service_styles' );
         </ul>
       </div>
       <div style="background:var(--gray7);border-radius:var(--r);padding:40px;border-left:4px solid var(--y)">
-        <div style="font-family:var(--fd);font-size:72px;font-weight:900;color:var(--y);line-height:1;margin-bottom:8px">%</div>
-        <div style="font-family:var(--fd);font-size:28px;font-weight:900;text-transform:uppercase;color:var(--dk);line-height:1.1;margin-bottom:16px"><?php esc_html_e( '80 % des problèmes', 'fissuredrainxt' ); ?><br><?php esc_html_e( 'd\'humidité au sous-sol', 'fissuredrainxt' ); ?></div>
+        <div style="font-family:var(--fd);font-size:72px;font-weight:900;color:var(--y);line-height:1;margin-bottom:8px">80%</div>
+        <div style="font-family:var(--fd);font-size:28px;font-weight:900;text-transform:uppercase;color:var(--dk);line-height:1.1;margin-bottom:16px"><?php esc_html_e( 'des problèmes', 'fissuredrainxt' ); ?><br><?php esc_html_e( 'd\'humidité au sous-sol', 'fissuredrainxt' ); ?></div>
         <p style="font-size:14px;color:var(--gray3);line-height:1.7;font-weight:300"><?php esc_html_e( 'sont causés par un drain français défectueux ou inexistant. Une inspection par caméra permet de confirmer l\'état exact sans excavation.', 'fissuredrainxt' ); ?></p>
         <div style="margin-top:20px;padding-top:20px;border-top:1px solid var(--gray6)">
           <span style="font-family:var(--fd);font-size:14px;font-weight:700;color:var(--dk)"><?php esc_html_e( 'À partir de 160 $/pi.lin.', 'fissuredrainxt' ); ?></span>
@@ -262,7 +262,7 @@ add_action( 'wp_head', 'fdxt_drain_service_styles' );
 </section>
 
 <!-- ═══ GALERIE PHOTOS ═══ -->
-<section class="sec">
+<section style="padding:80px 32px 0">
   <div class="cont">
     <div class="shead c">
       <span class="stag dk"><?php esc_html_e( 'Nos chantiers', 'fissuredrainxt' ); ?></span>
