@@ -14,9 +14,68 @@ get_header();
 function fdxt_drain_service_styles() {
   ?>
   <style>
+    /* ── PROCESSUS 5 colonnes ── */
     .prgrid--5{grid-template-columns:repeat(5,1fr)}
     @media(max-width:1100px){.prgrid--5{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:480px){.prgrid--5{grid-template-columns:1fr}}
+
+    /* ══════════════════════════════════════════════
+       PAGE DRAIN FRANÇAIS — Overrides design
+       Objectif : différencier visuellement de l'accueil
+    ══════════════════════════════════════════════ */
+
+    /* 1. Stats band : fond sombre au lieu du jaune générique */
+    .pdt-sband{background:var(--dk)}
+    .pdt-sband .sn{color:var(--y)}
+    .pdt-sband .su{color:rgba(245,168,0,.45);font-size:22px}
+    .pdt-sband .sl{color:rgba(255,255,255,.45)}
+    /* séparateur vertical entre les stats */
+    .pdt-sband .sgrid>div{border-right:1px solid rgba(255,255,255,.08);padding:0 24px}
+    .pdt-sband .sgrid>div:last-child{border-right:none}
+
+    /* 2. Section signes — fond ivoire chaud + numérotation CSS */
+    .pdt-signes{background:#FAF8F4}
+    .pdt-pgrid{counter-reset:signal-count}
+    .pdt-pgrid .pcard{counter-increment:signal-count;padding-top:44px;background:var(--w)}
+    .pdt-pgrid .pcard::after{
+      content:counter(signal-count,decimal-leading-zero);
+      position:absolute;top:14px;right:16px;
+      font-family:var(--fd);font-size:11px;font-weight:800;
+      letter-spacing:.1em;color:var(--y);
+      background:rgba(245,168,0,.1);
+      padding:2px 8px;border-radius:2px;
+    }
+    .pdt-pgrid .pcard:hover{border-color:var(--y);background:#FFFDF7}
+
+    /* 3. Processus — connecteur horizontal entre les étapes */
+    .pdt-prgrid{position:relative}
+    .pdt-prgrid::before{
+      content:'';
+      position:absolute;top:52px;left:0;right:0;
+      height:1px;
+      background:linear-gradient(90deg,transparent 2%,rgba(245,168,0,.25) 15%,rgba(245,168,0,.25) 85%,transparent 98%);
+      pointer-events:none;z-index:0;
+    }
+    .pdt-prgrid .prcard{position:relative;z-index:1}
+    /* point de connexion sur chaque carte */
+    .pdt-prgrid .prcard::before{
+      content:'';
+      position:absolute;top:48px;left:50%;transform:translateX(-50%);
+      width:9px;height:9px;border-radius:50%;
+      background:var(--dk3);border:2px solid rgba(245,168,0,.35);
+      z-index:2;transition:.3s;
+    }
+    .pdt-prgrid .prcard:hover::before{background:var(--y);border-color:var(--y)}
+
+    /* 4. CTA final — fond sombre au lieu du bandeau jaune générique */
+    .pdt-cta{background:var(--dk);border-top:3px solid var(--y)}
+    .pdt-cta .psec-cta-h{color:var(--w)}
+    .pdt-cta .psec-cta-sub{color:rgba(255,255,255,.5)}
+    .pdt-cta .psec-cta-btn-primary{background:var(--y);color:var(--dk)}
+    .pdt-cta .psec-cta-btn-primary:hover{background:var(--yl)}
+    .pdt-cta .psec-cta-btn-secondary{border-color:rgba(255,255,255,.3);color:var(--w)}
+    .pdt-cta .psec-cta-btn-secondary:hover{border-color:var(--y);color:var(--y)}
+    .pdt-cta .psec-cta-btn-secondary svg{stroke:currentColor}
   </style>
   <?php
 }
@@ -58,28 +117,28 @@ add_action( 'wp_head', 'fdxt_drain_service_styles' );
   </div>
 </section>
 
-<!-- ═══ CERTIF BAND ═══ -->
+<!-- ═══ CERTIF BAND DRAIN ═══ -->
 <div class="cband">
   <div class="cinner">
     <div class="citem"><img class="cico cico-lg" src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69d419d24ba93ac572be3c77.png" alt="" width="26" height="26"><?php esc_html_e( 'RBQ 5863-7364-01', 'fissuredrainxt' ); ?></div>
     <div class="csep" aria-hidden="true"></div>
     <div class="citem"><img class="cico cico-lg" src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69a7b543618c8dbaeda9de00.png" alt="" width="26" height="26"><?php esc_html_e( 'Garantie 25 ans', 'fissuredrainxt' ); ?><sup style="font-size:9px;vertical-align:super;color:rgba(245,168,0,.75)">*</sup> <?php esc_html_e( 'transférable', 'fissuredrainxt' ); ?></div>
     <div class="csep" aria-hidden="true"></div>
-    <div class="citem"><svg class="cico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg><?php esc_html_e( 'Écoresponsable', 'fissuredrainxt' ); ?></div>
+    <div class="citem"><svg class="cico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg><?php esc_html_e( 'Tuyau triple paroi', 'fissuredrainxt' ); ?></div>
     <div class="csep" aria-hidden="true"></div>
-    <div class="citem"><img class="cico" src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69a8d01c7bdf384a29516b35.svg" alt="" width="26" height="26"><?php esc_html_e( 'Intervention rapide', 'fissuredrainxt' ); ?></div>
+    <div class="citem"><svg class="cico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><?php esc_html_e( 'Inspection caméra HD', 'fissuredrainxt' ); ?></div>
     <div class="csep" aria-hidden="true"></div>
     <div class="citem"><svg class="cico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9,12 11,14 15,10"/></svg><?php esc_html_e( 'Assurance complète', 'fissuredrainxt' ); ?></div>
   </div>
 </div>
 
-<!-- ═══ STATS ═══ -->
-<div class="sband">
+<!-- ═══ STATS DRAIN FRANÇAIS ═══ -->
+<div class="sband pdt-sband">
   <div class="sgrid cont">
-    <div><div><span class="sn">25</span><span class="su"> ans</span></div><div class="sl"><?php esc_html_e( 'de garantie', 'fissuredrainxt' ); ?></div></div>
-    <div><div><span class="sn">500</span><span class="su">+</span></div><div class="sl"><?php esc_html_e( 'projets complétés', 'fissuredrainxt' ); ?></div></div>
-    <div><div><span class="sn">48</span><span class="su">h</span></div><div class="sl"><?php esc_html_e( 'délai d\'intervention', 'fissuredrainxt' ); ?></div></div>
-    <div><div><span class="sn">5</span><span class="su">★</span></div><div class="sl"><?php esc_html_e( 'satisfaction client', 'fissuredrainxt' ); ?></div></div>
+    <div><div><span class="sn">25</span><span class="su"> ans</span></div><div class="sl"><?php esc_html_e( 'de garantie drain', 'fissuredrainxt' ); ?></div></div>
+    <div><div><span class="sn">350</span><span class="su">+</span></div><div class="sl"><?php esc_html_e( 'drains installés', 'fissuredrainxt' ); ?></div></div>
+    <div><div><span class="sn">2</span><span class="su">–5j</span></div><div class="sl"><?php esc_html_e( 'durée de chantier', 'fissuredrainxt' ); ?></div></div>
+    <div><div><span class="sn">160</span><span class="su">$/pi</span></div><div class="sl"><?php esc_html_e( 'prix de départ', 'fissuredrainxt' ); ?></div></div>
   </div>
 </div>
 
@@ -116,7 +175,7 @@ add_action( 'wp_head', 'fdxt_drain_service_styles' );
 </section>
 
 <!-- ═══ SIGNES D'UN DRAIN DÉFECTUEUX ═══ -->
-<section class="sec sec-alt">
+<section class="sec pdt-signes">
   <div class="cont">
     <div class="shead c">
       <span class="stag dk"><?php esc_html_e( 'Signes avant-coureurs', 'fissuredrainxt' ); ?></span>
@@ -124,7 +183,7 @@ add_action( 'wp_head', 'fdxt_drain_service_styles' );
       <div class="sline c"></div>
       <p class="sp" style="margin:18px auto 0"><?php esc_html_e( 'Voici les indicateurs les plus fréquents d\'un drain français qui ne remplit plus son rôle.', 'fissuredrainxt' ); ?></p>
     </div>
-    <div class="pgrid">
+    <div class="pgrid pdt-pgrid">
       <div class="pcard">
         <div class="pacc"></div>
         <h4 class="pt"><?php esc_html_e( 'Infiltration d\'eau au sous-sol', 'fissuredrainxt' ); ?></h4>
@@ -168,7 +227,7 @@ add_action( 'wp_head', 'fdxt_drain_service_styles' );
       <div class="sline"></div>
       <p class="sp lt" style="margin-top:16px"><?php esc_html_e( 'De l\'inspection à la remise en état, voici comment nous procédons pour chaque chantier.', 'fissuredrainxt' ); ?></p>
     </div>
-    <div class="prgrid prgrid--5">
+    <div class="prgrid prgrid--5 pdt-prgrid">
       <?php
       $steps = array(
         array( 'num' => '01', 't' => 'Inspection & diagnostic', 'd' => 'Caméra HD et visite terrain pour évaluer l\'état du drain existant et localiser précisément les problèmes.' ),
@@ -309,20 +368,20 @@ add_action( 'wp_head', 'fdxt_drain_service_styles' );
 <section class="sec sec-alt" id="temoignages">
   <div class="cont">
     <div class="shead c">
-      <span class="stag dk"><?php esc_html_e( 'Ce que disent nos clients', 'fissuredrainxt' ); ?></span>
-      <h2 class="sh"><?php esc_html_e( 'Ils ont fait installer', 'fissuredrainxt' ); ?><br><span style="color:var(--y)"><?php esc_html_e( 'leur drain français', 'fissuredrainxt' ); ?></span></h2>
+      <span class="stag dk"><?php esc_html_e( 'Résultats concrets', 'fissuredrainxt' ); ?></span>
+      <h2 class="sh"><?php esc_html_e( 'Sous-sols assainis,', 'fissuredrainxt' ); ?><br><span style="color:var(--y)"><?php esc_html_e( 'propriétaires soulagés', 'fissuredrainxt' ); ?></span></h2>
       <div class="sline c"></div>
     </div>
     <div class="tmgrid">
       <div class="tmcard">
         <span class="tmtag"><?php esc_html_e( 'Drain français', 'fissuredrainxt' ); ?></span>
         <div class="tmstars">★★★★★</div>
-        <p class="tmtxt"><?php esc_html_e( '"Nous avions un problème d\'humidité chronique depuis des années. L\'équipe a tout expliqué clairement avant de commencer. Le sous-sol est enfin complètement au sec — la garantie 25 ans nous donne une tranquillité d\'esprit totale."', 'fissuredrainxt' ); ?></p>
+        <p class="tmtxt"><?php esc_html_e( '"Infiltration chaque printemps depuis 6 ans. Après l\'installation du drain, le premier gros dégel est passé sans une goutte d\'eau. L\'équipe a pris soin du gazon et tout était propre le soir même."', 'fissuredrainxt' ); ?></p>
         <div class="tmauth">
-          <div class="tmav">FT</div>
+          <div class="tmav">PG</div>
           <div>
-            <div class="tmname"><?php esc_html_e( 'François T.', 'fissuredrainxt' ); ?></div>
-            <div class="tmcity"><?php esc_html_e( 'Montréal, NDG', 'fissuredrainxt' ); ?></div>
+            <div class="tmname"><?php esc_html_e( 'Patricia G.', 'fissuredrainxt' ); ?></div>
+            <div class="tmcity"><?php esc_html_e( 'Laval, Chomedey', 'fissuredrainxt' ); ?></div>
           </div>
         </div>
       </div>
@@ -355,7 +414,7 @@ add_action( 'wp_head', 'fdxt_drain_service_styles' );
 </section>
 
 <!-- ═══ CTA FINAL ═══ -->
-<section class="psec-cta">
+<section class="psec-cta pdt-cta">
   <div class="cont">
     <div class="psec-cta-inner">
       <div>
