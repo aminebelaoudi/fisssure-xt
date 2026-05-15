@@ -73,25 +73,30 @@ function fdxt_drain_service_styles() {
     .pdt-cta .psec-cta-btn-primary:hover{background:var(--yl)}
     .pdt-cta .psec-cta-btn-secondary{border-color:rgba(255,255,255,.3);color:var(--w)}
     .pdt-cta .psec-cta-btn-secondary:hover{border-color:var(--y);color:var(--y)}
-    /* 5. Galerie bento moderne */
-    .pgal-wrap{display:grid;grid-template-columns:1fr 1.55fr;min-height:580px;overflow:hidden}
-    .pgal-head{background:var(--dk);padding:72px 56px;display:flex;flex-direction:column;justify-content:center;border-right:3px solid var(--y)}
+    /* 5. Galerie slider */
+    .pgal-section{background:var(--dk);overflow:hidden}
+    .pgal-wrap{display:grid;grid-template-columns:1fr 1.85fr;min-height:560px}
+    .pgal-head{padding:72px 56px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid rgba(255,255,255,.08)}
     .pgal-head .stag{margin-bottom:20px}
     .pgal-head .sh{margin-bottom:14px}
     .pgal-head .sline{margin-bottom:28px}
-    .pgal-head-desc{font-size:15px;color:rgba(255,255,255,.4);line-height:1.75;font-weight:300;max-width:340px}
-    .pgal-grid{display:grid;grid-template-columns:1.15fr 1fr;grid-template-rows:1fr 1fr;gap:3px}
-    .pgal-item{position:relative;overflow:hidden;cursor:pointer}
-    .pgal-item--main{grid-row:1/3}
-    .pgal-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .65s cubic-bezier(.22,.61,.36,1)}
-    .pgal-item:hover img{transform:scale(1.06)}
-    .pgal-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,26,26,.9) 0%,rgba(26,26,26,.05) 55%,transparent 100%)}
-    .pgal-content{position:absolute;bottom:0;left:0;right:0;padding:22px 20px}
-    .pgal-tag{display:inline-block;background:var(--y);color:var(--dk);font-family:var(--fd);font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:2px 9px;border-radius:2px;margin-bottom:8px}
-    .pgal-title{font-family:var(--fd);font-size:19px;font-weight:900;text-transform:uppercase;color:var(--w);line-height:1.1;margin-bottom:4px}
-    .pgal-desc{font-size:11px;color:rgba(255,255,255,.6);line-height:1.55;font-weight:300}
-    @media(max-width:900px){.pgal-wrap{grid-template-columns:1fr}.pgal-head{padding:52px 32px;border-right:none;border-bottom:3px solid var(--y)}.pgal-grid{grid-template-columns:1fr 1fr;grid-template-rows:220px}.pgal-item--main{grid-row:auto}}
-    @media(max-width:540px){.pgal-grid{grid-template-columns:1fr;grid-template-rows:auto}.pgal-item{aspect-ratio:16/9}}
+    .pgal-head-desc{font-size:15px;color:rgba(255,255,255,.4);line-height:1.75;font-weight:300;max-width:320px}
+    .pgal-slider-wrap{position:relative;overflow:hidden}
+    .pgal-track{display:flex;height:100%;will-change:transform;transition:transform .75s cubic-bezier(.4,0,.2,1)}
+    .pgal-slide{min-width:100%;height:100%;position:relative;flex-shrink:0}
+    .pgal-slide img{width:100%;height:100%;object-fit:cover;display:block}
+    .pgal-slide-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,26,26,.88) 0%,rgba(26,26,26,.08) 55%,transparent 100%)}
+    .pgal-slide-content{position:absolute;bottom:0;left:0;right:0;padding:44px 48px}
+    .pgal-tag{display:inline-block;background:var(--y);color:var(--dk);font-family:var(--fd);font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:3px 10px;border-radius:2px;margin-bottom:12px}
+    .pgal-slide-title{font-family:var(--fd);font-size:30px;font-weight:900;text-transform:uppercase;color:var(--w);line-height:1.05;margin-bottom:8px}
+    .pgal-slide-desc{font-size:13px;color:rgba(255,255,255,.55);line-height:1.6;font-weight:300;max-width:480px}
+    .pgal-dots{position:absolute;bottom:32px;right:36px;display:flex;gap:8px;z-index:2}
+    .pgal-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;transition:.35s;border:none;padding:0;outline:none}
+    .pgal-dot--active{background:var(--y)!important;width:28px!important;border-radius:3px!important}
+    .pgal-progress{position:absolute;bottom:0;left:0;right:0;height:2px;background:rgba(255,255,255,.06);z-index:2}
+    .pgal-progress-fill{height:100%;background:var(--y);width:0}
+    @media(max-width:900px){.pgal-wrap{grid-template-columns:1fr;min-height:auto}.pgal-head{padding:52px 32px;border-right:none;border-bottom:1px solid rgba(255,255,255,.08)}.pgal-slider-wrap{height:380px}.pgal-slide-content{padding:28px 28px}}
+    @media(max-width:540px){.pgal-slider-wrap{height:260px}}
   </style>
   <?php
 }
@@ -269,11 +274,11 @@ get_header();
   </div>
 </section>
 
-<!-- ═══ GALERIE PHOTOS ═══ -->
-<section style="overflow:hidden">
+<!-- ═══ GALERIE SLIDER ═══ -->
+<section class="pgal-section">
   <div class="pgal-wrap">
 
-    <!-- Panneau texte sombre -->
+    <!-- Panneau texte -->
     <div class="pgal-head">
       <span class="stag"><?php esc_html_e( 'Nos chantiers', 'fissuredrainxt' ); ?></span>
       <h2 class="sh lt"><?php esc_html_e( 'Le travail parle', 'fissuredrainxt' ); ?><br><span style="color:var(--y)"><?php esc_html_e( 'de lui-même', 'fissuredrainxt' ); ?></span></h2>
@@ -281,46 +286,104 @@ get_header();
       <p class="pgal-head-desc"><?php esc_html_e( 'Chaque chantier est documenté — excavation, pose, remblayage et inspection caméra HD remise au client.', 'fissuredrainxt' ); ?></p>
     </div>
 
-    <!-- Grille bento 3 images -->
-    <div class="pgal-grid">
+    <!-- Slider -->
+    <div class="pgal-slider-wrap">
+      <div class="pgal-track" id="pgalTrack">
 
-      <!-- Image principale (pleine hauteur) -->
-      <div class="pgal-item pgal-item--main">
-        <img src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69fbb4c24ef91f2f59390ce7.png"
-             alt="<?php esc_attr_e( 'Pose du drain français — tuyau perforé triple paroi', 'fissuredrainxt' ); ?>">
-        <div class="pgal-overlay"></div>
-        <div class="pgal-content">
-          <span class="pgal-tag"><?php esc_html_e( 'Installation', 'fissuredrainxt' ); ?></span>
-          <h3 class="pgal-title"><?php esc_html_e( 'Pose du drain', 'fissuredrainxt' ); ?></h3>
-          <p class="pgal-desc"><?php esc_html_e( 'Tuyau triple paroi, géotextile et pierre calibrée', 'fissuredrainxt' ); ?></p>
+        <div class="pgal-slide">
+          <img src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69fbb4c24ef91f2f59390ce7.png"
+               alt="<?php esc_attr_e( 'Pose du drain français — tuyau perforé triple paroi', 'fissuredrainxt' ); ?>">
+          <div class="pgal-slide-overlay"></div>
+          <div class="pgal-slide-content">
+            <span class="pgal-tag"><?php esc_html_e( 'Installation', 'fissuredrainxt' ); ?></span>
+            <h3 class="pgal-slide-title"><?php esc_html_e( 'Pose du drain', 'fissuredrainxt' ); ?></h3>
+            <p class="pgal-slide-desc"><?php esc_html_e( 'Tuyau perforé triple paroi, géotextile anti-racines et pierre drainante calibrée', 'fissuredrainxt' ); ?></p>
+          </div>
         </div>
+
+        <div class="pgal-slide">
+          <img src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69cd604e65dd94041a48fe92.jpg"
+               alt="<?php esc_attr_e( 'Excavation périmètre de fondation drain français', 'fissuredrainxt' ); ?>">
+          <div class="pgal-slide-overlay"></div>
+          <div class="pgal-slide-content">
+            <span class="pgal-tag"><?php esc_html_e( 'Excavation', 'fissuredrainxt' ); ?></span>
+            <h3 class="pgal-slide-title"><?php esc_html_e( 'Fondation dégagée', 'fissuredrainxt' ); ?></h3>
+            <p class="pgal-slide-desc"><?php esc_html_e( 'Dégagement complet du périmètre — terrain protégé, remblayage inclus', 'fissuredrainxt' ); ?></p>
+          </div>
+        </div>
+
+        <div class="pgal-slide">
+          <img src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69cd5f090f0dab5b9ded3c07.png"
+               alt="<?php esc_attr_e( 'Inspection caméra HD drain français', 'fissuredrainxt' ); ?>">
+          <div class="pgal-slide-overlay"></div>
+          <div class="pgal-slide-content">
+            <span class="pgal-tag"><?php esc_html_e( 'Inspection', 'fissuredrainxt' ); ?></span>
+            <h3 class="pgal-slide-title"><?php esc_html_e( 'Caméra HD incluse', 'fissuredrainxt' ); ?></h3>
+            <p class="pgal-slide-desc"><?php esc_html_e( 'Diagnostic précis avant et après travaux — rapport vidéo remis au client', 'fissuredrainxt' ); ?></p>
+          </div>
+        </div>
+
       </div>
 
-      <!-- Image haut droite -->
-      <div class="pgal-item">
-        <img src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69cd604e65dd94041a48fe92.jpg"
-             alt="<?php esc_attr_e( 'Excavation périmètre de fondation drain français', 'fissuredrainxt' ); ?>">
-        <div class="pgal-overlay"></div>
-        <div class="pgal-content">
-          <span class="pgal-tag"><?php esc_html_e( 'Excavation', 'fissuredrainxt' ); ?></span>
-          <h3 class="pgal-title"><?php esc_html_e( 'Fondation dégagée', 'fissuredrainxt' ); ?></h3>
-        </div>
+      <!-- Dots navigation -->
+      <div class="pgal-dots" role="tablist" aria-label="<?php esc_attr_e( 'Navigation galerie', 'fissuredrainxt' ); ?>">
+        <button class="pgal-dot pgal-dot--active" aria-label="<?php esc_attr_e( 'Slide 1', 'fissuredrainxt' ); ?>"></button>
+        <button class="pgal-dot" aria-label="<?php esc_attr_e( 'Slide 2', 'fissuredrainxt' ); ?>"></button>
+        <button class="pgal-dot" aria-label="<?php esc_attr_e( 'Slide 3', 'fissuredrainxt' ); ?>"></button>
       </div>
 
-      <!-- Image bas droite -->
-      <div class="pgal-item">
-        <img src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69cd5f090f0dab5b9ded3c07.png"
-             alt="<?php esc_attr_e( 'Inspection caméra HD drain français', 'fissuredrainxt' ); ?>">
-        <div class="pgal-overlay"></div>
-        <div class="pgal-content">
-          <span class="pgal-tag"><?php esc_html_e( 'Inspection', 'fissuredrainxt' ); ?></span>
-          <h3 class="pgal-title"><?php esc_html_e( 'Caméra HD incluse', 'fissuredrainxt' ); ?></h3>
-        </div>
-      </div>
-
+      <!-- Barre de progression -->
+      <div class="pgal-progress"><div class="pgal-progress-fill" id="pgalFill"></div></div>
     </div>
+
   </div>
 </section>
+<script>
+(function(){
+  var track = document.getElementById('pgalTrack');
+  var fill  = document.getElementById('pgalFill');
+  var dots  = document.querySelectorAll('.pgal-dot');
+  if(!track) return;
+  var total = track.children.length;
+  var cur   = 0;
+  var DELAY = 4200;
+  var timer;
+
+  function goTo(n){
+    cur = (n + total) % total;
+    track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+    dots.forEach(function(d,i){ d.classList.toggle('pgal-dot--active', i===cur); });
+    if(fill){
+      fill.style.transition = 'none';
+      fill.style.width = '0%';
+      requestAnimationFrame(function(){
+        requestAnimationFrame(function(){
+          fill.style.transition = 'width ' + DELAY + 'ms linear';
+          fill.style.width = '100%';
+        });
+      });
+    }
+  }
+
+  function next(){ goTo(cur + 1); }
+  function startTimer(){ timer = setInterval(next, DELAY); }
+  function stopTimer(){ clearInterval(timer); }
+
+  dots.forEach(function(d,i){
+    d.addEventListener('click', function(){ stopTimer(); goTo(i); startTimer(); });
+  });
+
+  /* pause on hover */
+  var wrap = track.closest('.pgal-slider-wrap');
+  if(wrap){
+    wrap.addEventListener('mouseenter', stopTimer);
+    wrap.addEventListener('mouseleave', startTimer);
+  }
+
+  goTo(0);
+  startTimer();
+})();
+</script>
 
 <!-- ═══ GARANTIE ═══ -->
 <section id="garantie" style="overflow:hidden">
