@@ -161,6 +161,15 @@ function fdxt_drain_seo_schemas() {
 add_action( 'wp_head', 'fdxt_drain_seo_schemas' );
 
 get_header();
+
+// Images modifiables depuis WP Admin (fallback sur CDN si non renseigné)
+$_id       = get_the_ID();
+$fdxt_hero    = esc_url( get_post_meta( $_id, '_fdxt_drain_hero_img',  true ) ?: 'https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69fbb4c24ef91f2f59390ce7.png' );
+$fdxt_gal     = array(
+    1 => esc_url( get_post_meta( $_id, '_fdxt_drain_gal_img_1', true ) ?: 'https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69cd5f090f0dab5b9ded3c07.png' ),
+    2 => esc_url( get_post_meta( $_id, '_fdxt_drain_gal_img_2', true ) ?: 'https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69cd604e65dd94041a48fe92.jpg' ),
+    3 => esc_url( get_post_meta( $_id, '_fdxt_drain_gal_img_3', true ) ?: 'https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69fbb4c24ef91f2f59390ce7.png' ),
+);
 ?>
 
 <!-- ═══ URGENCY STRIP ═══ -->
@@ -168,7 +177,7 @@ get_header();
 
 <!-- ═══ HERO DRAIN ═══ -->
 <section class="hero" style="min-height:0;padding:130px 32px 70px">
-  <div class="hero-photo-bg" style="background-image:url('https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69fbb4c24ef91f2f59390ce7.png')"></div>
+  <div class="hero-photo-bg" style="background-image:url('<?php echo $fdxt_hero; ?>')"></div>
   <div class="hgrid cont" style="grid-template-columns:1.2fr 1fr">
     <div>
       <div class="hpills">
@@ -343,15 +352,15 @@ get_header();
 
     <div class="pgal-row" id="pgalRow">
       <div class="pgal-card">
-        <img src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69cd5f090f0dab5b9ded3c07.png"
+        <img src="<?php echo $fdxt_gal[1]; ?>"
              alt="<?php esc_attr_e( 'Inspection caméra chantier drain français', 'fissuredrainxt' ); ?>">
       </div>
       <div class="pgal-card">
-        <img src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69cd604e65dd94041a48fe92.jpg"
+        <img src="<?php echo $fdxt_gal[2]; ?>"
              alt="<?php esc_attr_e( 'Chantier fondation et drainage', 'fissuredrainxt' ); ?>">
       </div>
       <div class="pgal-card">
-        <img src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69fbb4c24ef91f2f59390ce7.png"
+        <img src="<?php echo $fdxt_gal[3]; ?>"
              alt="<?php esc_attr_e( 'Pose drain français résidentiel', 'fissuredrainxt' ); ?>">
       </div>
     </div>
