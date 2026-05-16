@@ -73,23 +73,18 @@ function fdxt_drain_service_styles() {
     .pdt-cta .psec-cta-btn-primary:hover{background:var(--yl)}
     .pdt-cta .psec-cta-btn-secondary{border-color:rgba(255,255,255,.3);color:var(--w)}
     .pdt-cta .psec-cta-btn-secondary:hover{border-color:var(--y);color:var(--y)}
-    /* 5. Galerie style vitrine */
-    .pgal-section{background:#0A0B10;padding:86px 32px 78px}
-    .pgal-shell{max-width:1220px;margin:0 auto}
-    .pgal-top{text-align:center;margin-bottom:42px}
-    .pgal-kicker{display:inline-block;background:#D61E28;color:#fff;font-family:var(--fd);font-size:10px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;padding:6px 14px;border-radius:3px;margin-bottom:18px}
-    .pgal-heading{font-family:var(--fd);font-size:64px;line-height:.95;font-weight:900;text-transform:uppercase;color:#fff;letter-spacing:.01em}
-    .pgal-row{display:grid;grid-template-columns:.68fr 1.32fr .68fr;gap:34px;align-items:center}
-    .pgal-card{position:relative;overflow:hidden;border-radius:6px;background:#0f1016;box-shadow:0 10px 34px rgba(0,0,0,.28)}
+    /* 5. Galerie photos */
+    .pgal-row{display:grid;grid-template-columns:.68fr 1.32fr .68fr;gap:28px;align-items:center;margin-top:8px}
+    .pgal-card{overflow:hidden;border-radius:4px;background:var(--dk3);box-shadow:0 8px 28px rgba(0,0,0,.35)}
     .pgal-card--side{aspect-ratio:3/5}
     .pgal-card--main{aspect-ratio:4/3}
-    .pgal-card img{width:100%;height:100%;object-fit:cover;display:block}
-    .pgal-cta-wrap{text-align:center;margin-top:34px}
-    .pgal-cta{display:inline-block;background:#D61E28;color:#fff;padding:15px 34px;border-radius:6px;font-family:var(--fd);font-size:20px;font-weight:900;letter-spacing:.03em;text-transform:uppercase;transition:background .2s ease,transform .2s ease}
-    .pgal-cta:hover{background:#E2242F;transform:translateY(-1px)}
-    @media(max-width:1100px){.pgal-heading{font-size:56px}.pgal-row{gap:22px}}
-    @media(max-width:900px){.pgal-section{padding:68px 20px 64px}.pgal-heading{font-size:44px}.pgal-row{grid-template-columns:1fr;gap:16px}.pgal-card--side,.pgal-card--main{aspect-ratio:16/10}}
-    @media(max-width:540px){.pgal-heading{font-size:34px}.pgal-kicker{font-size:9px;padding:5px 12px}.pgal-cta{font-size:16px;padding:13px 24px}}
+    .pgal-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s cubic-bezier(.22,.61,.36,1)}
+    .pgal-card:hover img{transform:scale(1.04)}
+    .pgal-cta-wrap{text-align:center;margin-top:40px}
+    .pgal-cta{display:inline-block;background:var(--y);color:var(--dk);padding:14px 36px;border-radius:3px;font-family:var(--fd);font-size:17px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;transition:background .2s,transform .2s}
+    .pgal-cta:hover{background:var(--yl);transform:translateY(-2px)}
+    @media(max-width:1100px){.pgal-row{gap:18px}}
+    @media(max-width:900px){.pgal-row{grid-template-columns:1fr;gap:14px}.pgal-card--side,.pgal-card--main{aspect-ratio:16/10}}
   </style>
   <?php
 }
@@ -267,12 +262,13 @@ get_header();
   </div>
 </section>
 
-<!-- ═══ GALERIE VITRINE ═══ -->
-<section class="pgal-section">
-  <div class="pgal-shell">
-    <div class="pgal-top">
-      <span class="pgal-kicker"><?php esc_html_e( 'Sur le terrain', 'fissuredrainxt' ); ?></span>
-      <h2 class="pgal-heading"><?php esc_html_e( 'Nos chantiers, nos résultats', 'fissuredrainxt' ); ?></h2>
+<!-- ═══ GALERIE PHOTOS ═══ -->
+<section class="sec" style="background:var(--dk)">
+  <div class="cont">
+    <div class="shead c">
+      <span class="stag dk"><?php esc_html_e( 'Nos chantiers', 'fissuredrainxt' ); ?></span>
+      <h2 class="sh"><?php esc_html_e( 'Le travail parle', 'fissuredrainxt' ); ?><br><span style="color:var(--y)"><?php esc_html_e( 'de lui-même', 'fissuredrainxt' ); ?></span></h2>
+      <div class="sline c"></div>
     </div>
 
     <div class="pgal-row">
