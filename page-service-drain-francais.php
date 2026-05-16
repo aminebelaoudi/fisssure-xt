@@ -73,30 +73,23 @@ function fdxt_drain_service_styles() {
     .pdt-cta .psec-cta-btn-primary:hover{background:var(--yl)}
     .pdt-cta .psec-cta-btn-secondary{border-color:rgba(255,255,255,.3);color:var(--w)}
     .pdt-cta .psec-cta-btn-secondary:hover{border-color:var(--y);color:var(--y)}
-    /* 5. Galerie slider */
-    .pgal-section{background:var(--dk);overflow:hidden}
-    .pgal-wrap{display:grid;grid-template-columns:1fr 1.85fr;min-height:560px}
-    .pgal-head{padding:72px 56px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid rgba(255,255,255,.08)}
-    .pgal-head .stag{margin-bottom:20px}
-    .pgal-head .sh{margin-bottom:14px}
-    .pgal-head .sline{margin-bottom:28px}
-    .pgal-head-desc{font-size:15px;color:rgba(255,255,255,.4);line-height:1.75;font-weight:300;max-width:320px}
-    .pgal-slider-wrap{position:relative;overflow:hidden}
-    .pgal-track{display:flex;height:100%;will-change:transform;transition:transform .75s cubic-bezier(.4,0,.2,1)}
-    .pgal-slide{min-width:100%;height:100%;position:relative;flex-shrink:0}
-    .pgal-slide img{width:100%;height:100%;object-fit:cover;display:block}
-    .pgal-slide-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,26,26,.88) 0%,rgba(26,26,26,.08) 55%,transparent 100%)}
-    .pgal-slide-content{position:absolute;bottom:0;left:0;right:0;padding:44px 48px}
-    .pgal-tag{display:inline-block;background:var(--y);color:var(--dk);font-family:var(--fd);font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:3px 10px;border-radius:2px;margin-bottom:12px}
-    .pgal-slide-title{font-family:var(--fd);font-size:30px;font-weight:900;text-transform:uppercase;color:var(--w);line-height:1.05;margin-bottom:8px}
-    .pgal-slide-desc{font-size:13px;color:rgba(255,255,255,.55);line-height:1.6;font-weight:300;max-width:480px}
-    .pgal-dots{position:absolute;bottom:32px;right:36px;display:flex;gap:8px;z-index:2}
-    .pgal-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;transition:.35s;border:none;padding:0;outline:none}
-    .pgal-dot--active{background:var(--y)!important;width:28px!important;border-radius:3px!important}
-    .pgal-progress{position:absolute;bottom:0;left:0;right:0;height:2px;background:rgba(255,255,255,.06);z-index:2}
-    .pgal-progress-fill{height:100%;background:var(--y);width:0}
-    @media(max-width:900px){.pgal-wrap{grid-template-columns:1fr;min-height:auto}.pgal-head{padding:52px 32px;border-right:none;border-bottom:1px solid rgba(255,255,255,.08)}.pgal-slider-wrap{height:380px}.pgal-slide-content{padding:28px 28px}}
-    @media(max-width:540px){.pgal-slider-wrap{height:260px}}
+    /* 5. Galerie style vitrine */
+    .pgal-section{background:#0A0B10;padding:86px 32px 78px}
+    .pgal-shell{max-width:1220px;margin:0 auto}
+    .pgal-top{text-align:center;margin-bottom:42px}
+    .pgal-kicker{display:inline-block;background:#D61E28;color:#fff;font-family:var(--fd);font-size:10px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;padding:6px 14px;border-radius:3px;margin-bottom:18px}
+    .pgal-heading{font-family:var(--fd);font-size:64px;line-height:.95;font-weight:900;text-transform:uppercase;color:#fff;letter-spacing:.01em}
+    .pgal-row{display:grid;grid-template-columns:.68fr 1.32fr .68fr;gap:34px;align-items:center}
+    .pgal-card{position:relative;overflow:hidden;border-radius:6px;background:#0f1016;box-shadow:0 10px 34px rgba(0,0,0,.28)}
+    .pgal-card--side{aspect-ratio:3/5}
+    .pgal-card--main{aspect-ratio:4/3}
+    .pgal-card img{width:100%;height:100%;object-fit:cover;display:block}
+    .pgal-cta-wrap{text-align:center;margin-top:34px}
+    .pgal-cta{display:inline-block;background:#D61E28;color:#fff;padding:15px 34px;border-radius:6px;font-family:var(--fd);font-size:20px;font-weight:900;letter-spacing:.03em;text-transform:uppercase;transition:background .2s ease,transform .2s ease}
+    .pgal-cta:hover{background:#E2242F;transform:translateY(-1px)}
+    @media(max-width:1100px){.pgal-heading{font-size:56px}.pgal-row{gap:22px}}
+    @media(max-width:900px){.pgal-section{padding:68px 20px 64px}.pgal-heading{font-size:44px}.pgal-row{grid-template-columns:1fr;gap:16px}.pgal-card--side,.pgal-card--main{aspect-ratio:16/10}}
+    @media(max-width:540px){.pgal-heading{font-size:34px}.pgal-kicker{font-size:9px;padding:5px 12px}.pgal-cta{font-size:16px;padding:13px 24px}}
   </style>
   <?php
 }
@@ -274,116 +267,36 @@ get_header();
   </div>
 </section>
 
-<!-- ═══ GALERIE SLIDER ═══ -->
+<!-- ═══ GALERIE VITRINE ═══ -->
 <section class="pgal-section">
-  <div class="pgal-wrap">
-
-    <!-- Panneau texte -->
-    <div class="pgal-head">
-      <span class="stag"><?php esc_html_e( 'Nos chantiers', 'fissuredrainxt' ); ?></span>
-      <h2 class="sh lt"><?php esc_html_e( 'Le travail parle', 'fissuredrainxt' ); ?><br><span style="color:var(--y)"><?php esc_html_e( 'de lui-même', 'fissuredrainxt' ); ?></span></h2>
-      <div class="sline lt"></div>
-      <p class="pgal-head-desc"><?php esc_html_e( 'Chaque chantier est documenté — excavation, pose, remblayage et inspection caméra HD remise au client.', 'fissuredrainxt' ); ?></p>
+  <div class="pgal-shell">
+    <div class="pgal-top">
+      <span class="pgal-kicker"><?php esc_html_e( 'Sur le terrain', 'fissuredrainxt' ); ?></span>
+      <h2 class="pgal-heading"><?php esc_html_e( 'Nos chantiers, nos résultats', 'fissuredrainxt' ); ?></h2>
     </div>
 
-    <!-- Slider -->
-    <div class="pgal-slider-wrap">
-      <div class="pgal-track" id="pgalTrack">
-
-        <div class="pgal-slide">
-          <img src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69fbb4c24ef91f2f59390ce7.png"
-               alt="<?php esc_attr_e( 'Pose du drain français — tuyau perforé triple paroi', 'fissuredrainxt' ); ?>">
-          <div class="pgal-slide-overlay"></div>
-          <div class="pgal-slide-content">
-            <span class="pgal-tag"><?php esc_html_e( 'Installation', 'fissuredrainxt' ); ?></span>
-            <h3 class="pgal-slide-title"><?php esc_html_e( 'Pose du drain', 'fissuredrainxt' ); ?></h3>
-            <p class="pgal-slide-desc"><?php esc_html_e( 'Tuyau perforé triple paroi, géotextile anti-racines et pierre drainante calibrée', 'fissuredrainxt' ); ?></p>
-          </div>
-        </div>
-
-        <div class="pgal-slide">
-          <img src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69cd604e65dd94041a48fe92.jpg"
-               alt="<?php esc_attr_e( 'Excavation périmètre de fondation drain français', 'fissuredrainxt' ); ?>">
-          <div class="pgal-slide-overlay"></div>
-          <div class="pgal-slide-content">
-            <span class="pgal-tag"><?php esc_html_e( 'Excavation', 'fissuredrainxt' ); ?></span>
-            <h3 class="pgal-slide-title"><?php esc_html_e( 'Fondation dégagée', 'fissuredrainxt' ); ?></h3>
-            <p class="pgal-slide-desc"><?php esc_html_e( 'Dégagement complet du périmètre — terrain protégé, remblayage inclus', 'fissuredrainxt' ); ?></p>
-          </div>
-        </div>
-
-        <div class="pgal-slide">
-          <img src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69cd5f090f0dab5b9ded3c07.png"
-               alt="<?php esc_attr_e( 'Inspection caméra HD drain français', 'fissuredrainxt' ); ?>">
-          <div class="pgal-slide-overlay"></div>
-          <div class="pgal-slide-content">
-            <span class="pgal-tag"><?php esc_html_e( 'Inspection', 'fissuredrainxt' ); ?></span>
-            <h3 class="pgal-slide-title"><?php esc_html_e( 'Caméra HD incluse', 'fissuredrainxt' ); ?></h3>
-            <p class="pgal-slide-desc"><?php esc_html_e( 'Diagnostic précis avant et après travaux — rapport vidéo remis au client', 'fissuredrainxt' ); ?></p>
-          </div>
-        </div>
-
+    <div class="pgal-row">
+      <div class="pgal-card pgal-card--side">
+        <img src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69cd5f090f0dab5b9ded3c07.png"
+             alt="<?php esc_attr_e( 'Inspection caméra chantier drain français', 'fissuredrainxt' ); ?>">
       </div>
 
-      <!-- Dots navigation -->
-      <div class="pgal-dots" role="tablist" aria-label="<?php esc_attr_e( 'Navigation galerie', 'fissuredrainxt' ); ?>">
-        <button class="pgal-dot pgal-dot--active" aria-label="<?php esc_attr_e( 'Slide 1', 'fissuredrainxt' ); ?>"></button>
-        <button class="pgal-dot" aria-label="<?php esc_attr_e( 'Slide 2', 'fissuredrainxt' ); ?>"></button>
-        <button class="pgal-dot" aria-label="<?php esc_attr_e( 'Slide 3', 'fissuredrainxt' ); ?>"></button>
+      <div class="pgal-card pgal-card--main">
+        <img src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69cd604e65dd94041a48fe92.jpg"
+             alt="<?php esc_attr_e( 'Chantier principal de fondation et drainage', 'fissuredrainxt' ); ?>">
       </div>
 
-      <!-- Barre de progression -->
-      <div class="pgal-progress"><div class="pgal-progress-fill" id="pgalFill"></div></div>
+      <div class="pgal-card pgal-card--side">
+        <img src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69fbb4c24ef91f2f59390ce7.png"
+             alt="<?php esc_attr_e( 'Réalisation résidentielle avec travaux de drainage', 'fissuredrainxt' ); ?>">
+      </div>
     </div>
 
+    <div class="pgal-cta-wrap">
+      <a href="/soumission" class="pgal-cta"><?php esc_html_e( 'Toutes nos réalisations', 'fissuredrainxt' ); ?></a>
+    </div>
   </div>
 </section>
-<script>
-(function(){
-  var track = document.getElementById('pgalTrack');
-  var fill  = document.getElementById('pgalFill');
-  var dots  = document.querySelectorAll('.pgal-dot');
-  if(!track) return;
-  var total = track.children.length;
-  var cur   = 0;
-  var DELAY = 4200;
-  var timer;
-
-  function goTo(n){
-    cur = (n + total) % total;
-    track.style.transform = 'translateX(-' + (cur * 100) + '%)';
-    dots.forEach(function(d,i){ d.classList.toggle('pgal-dot--active', i===cur); });
-    if(fill){
-      fill.style.transition = 'none';
-      fill.style.width = '0%';
-      requestAnimationFrame(function(){
-        requestAnimationFrame(function(){
-          fill.style.transition = 'width ' + DELAY + 'ms linear';
-          fill.style.width = '100%';
-        });
-      });
-    }
-  }
-
-  function next(){ goTo(cur + 1); }
-  function startTimer(){ timer = setInterval(next, DELAY); }
-  function stopTimer(){ clearInterval(timer); }
-
-  dots.forEach(function(d,i){
-    d.addEventListener('click', function(){ stopTimer(); goTo(i); startTimer(); });
-  });
-
-  /* pause on hover */
-  var wrap = track.closest('.pgal-slider-wrap');
-  if(wrap){
-    wrap.addEventListener('mouseenter', stopTimer);
-    wrap.addEventListener('mouseleave', startTimer);
-  }
-
-  goTo(0);
-  startTimer();
-})();
-</script>
 
 <!-- ═══ GARANTIE ═══ -->
 <section id="garantie" style="overflow:hidden">
