@@ -73,18 +73,34 @@ function fdxt_drain_service_styles() {
     .pdt-cta .psec-cta-btn-primary:hover{background:var(--yl)}
     .pdt-cta .psec-cta-btn-secondary{border-color:rgba(255,255,255,.3);color:var(--w)}
     .pdt-cta .psec-cta-btn-secondary:hover{border-color:var(--y);color:var(--y)}
-    /* 5. Galerie photos */
-    .pgal-row{display:grid;grid-template-columns:.68fr 1.32fr .68fr;gap:28px;align-items:center;margin-top:8px}
-    .pgal-card{overflow:hidden;border-radius:4px;background:var(--dk3);box-shadow:0 8px 28px rgba(0,0,0,.35)}
-    .pgal-card--side{aspect-ratio:3/5}
-    .pgal-card--main{aspect-ratio:4/3}
-    .pgal-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s cubic-bezier(.22,.61,.36,1)}
-    .pgal-card:hover img{transform:scale(1.04)}
-    .pgal-cta-wrap{text-align:center;margin-top:40px}
+    /* 5. Galerie photos 3D carousel */
+    .pgal-row{position:relative;height:480px;margin-top:52px}
+    .pgal-card{position:absolute;top:50%;overflow:hidden;border-radius:8px;
+      transition:left .75s cubic-bezier(.4,0,.2,1),width .75s cubic-bezier(.4,0,.2,1),height .75s cubic-bezier(.4,0,.2,1),filter .75s ease,box-shadow .75s ease,transform .75s cubic-bezier(.4,0,.2,1)}
+    .pgal-card img{width:100%;height:100%;object-fit:cover;display:block}
+    /* — centre — */
+    .pgal-pos-center{left:28%;width:44%;height:100%;transform:translateY(-50%);z-index:3;
+      box-shadow:0 28px 72px rgba(26,26,26,.18),0 0 0 3px rgba(245,168,0,.5);
+      filter:brightness(1);animation:pgal-ring 2.5s ease-in-out infinite}
+    /* — gauche — */
+    .pgal-pos-left{left:1%;width:25%;height:76%;transform:translateY(-50%);z-index:1;
+      box-shadow:0 8px 24px rgba(26,26,26,.08);filter:brightness(0.55)}
+    /* — droite — */
+    .pgal-pos-right{left:74%;width:25%;height:76%;transform:translateY(-50%);z-index:1;
+      box-shadow:0 8px 24px rgba(26,26,26,.08);filter:brightness(0.55)}
+    /* anneau jaune pulse sur l'image active */
+    @keyframes pgal-ring{
+      0%,100%{box-shadow:0 28px 72px rgba(26,26,26,.18),0 0 0 3px rgba(245,168,0,.3)}
+      50%{box-shadow:0 32px 80px rgba(26,26,26,.22),0 0 0 6px rgba(245,168,0,.85)}
+    }
+    .pgal-cta-wrap{text-align:center;margin-top:44px}
     .pgal-cta{display:inline-block;background:var(--y);color:var(--dk);padding:14px 36px;border-radius:3px;font-family:var(--fd);font-size:17px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;transition:background .2s,transform .2s}
     .pgal-cta:hover{background:var(--yl);transform:translateY(-2px)}
-    @media(max-width:1100px){.pgal-row{gap:18px}}
-    @media(max-width:900px){.pgal-row{grid-template-columns:1fr;gap:14px}.pgal-card--side,.pgal-card--main{aspect-ratio:16/10}}
+    @media(max-width:900px){
+      .pgal-row{height:auto;display:grid;grid-template-columns:1fr;gap:14px;margin-top:32px}
+      .pgal-card{position:static;transform:none!important;width:100%!important;height:auto!important;filter:brightness(1)!important;animation:none!important;box-shadow:0 6px 18px rgba(26,26,26,.1)!important}
+      .pgal-card img{aspect-ratio:16/10;height:auto}
+    }
   </style>
   <?php
 }
@@ -263,7 +279,7 @@ get_header();
 </section>
 
 <!-- ═══ GALERIE PHOTOS ═══ -->
-<section class="sec" style="background:var(--dk)">
+<section class="sec" style="background:var(--w)">
   <div class="cont">
     <div class="shead c">
       <span class="stag dk"><?php esc_html_e( 'Nos chantiers', 'fissuredrainxt' ); ?></span>
@@ -271,20 +287,18 @@ get_header();
       <div class="sline c"></div>
     </div>
 
-    <div class="pgal-row">
-      <div class="pgal-card pgal-card--side">
+    <div class="pgal-row" id="pgalRow">
+      <div class="pgal-card">
         <img src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69cd5f090f0dab5b9ded3c07.png"
              alt="<?php esc_attr_e( 'Inspection caméra chantier drain français', 'fissuredrainxt' ); ?>">
       </div>
-
-      <div class="pgal-card pgal-card--main">
+      <div class="pgal-card">
         <img src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69cd604e65dd94041a48fe92.jpg"
-             alt="<?php esc_attr_e( 'Chantier principal de fondation et drainage', 'fissuredrainxt' ); ?>">
+             alt="<?php esc_attr_e( 'Chantier fondation et drainage', 'fissuredrainxt' ); ?>">
       </div>
-
-      <div class="pgal-card pgal-card--side">
+      <div class="pgal-card">
         <img src="https://assets.cdn.filesafe.space/AEU385dO0vBFBDc6uJ07/media/69fbb4c24ef91f2f59390ce7.png"
-             alt="<?php esc_attr_e( 'Réalisation résidentielle avec travaux de drainage', 'fissuredrainxt' ); ?>">
+             alt="<?php esc_attr_e( 'Pose drain français résidentiel', 'fissuredrainxt' ); ?>">
       </div>
     </div>
 
@@ -293,6 +307,32 @@ get_header();
     </div>
   </div>
 </section>
+<script>
+(function(){
+  var row = document.getElementById('pgalRow');
+  if(!row) return;
+  var cards = row.querySelectorAll('.pgal-card');
+  if(cards.length < 3) return;
+  var POSITIONS = ['pgal-pos-center','pgal-pos-left','pgal-pos-right'];
+  var state = 0;
+  var DELAY = 3600;
+
+  function apply(){
+    cards.forEach(function(card, i){
+      card.classList.remove('pgal-pos-center','pgal-pos-left','pgal-pos-right');
+      /* rotation circulaire : state=0 → card0=centre, card1=droite, card2=gauche */
+      var pos = (i - state + 3) % 3;
+      card.classList.add(POSITIONS[pos]);
+    });
+  }
+
+  apply();
+  setInterval(function(){
+    state = (state + 1) % 3;
+    apply();
+  }, DELAY);
+})();
+</script>
 
 <!-- ═══ GARANTIE ═══ -->
 <section id="garantie" style="overflow:hidden">
