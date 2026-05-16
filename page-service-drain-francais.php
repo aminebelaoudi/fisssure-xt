@@ -106,6 +106,60 @@ function fdxt_drain_service_styles() {
 }
 add_action( 'wp_head', 'fdxt_drain_service_styles' );
 
+/* ── SEO : FAQPage + Service JSON-LD (Yoast gère meta/OG/canonical) ── */
+function fdxt_drain_seo_schemas() {
+    $faq = array(
+        '@context'   => 'https://schema.org',
+        '@type'      => 'FAQPage',
+        'mainEntity' => array(
+            array( '@type' => 'Question', 'name' => "Quels sont les signes d'un drain français défectueux ?",        'acceptedAnswer' => array( '@type' => 'Answer', 'text' => "Infiltration d'eau au sous-sol après une pluie, humidité persistante des murs de fondation, odeurs de moisissure, efflorescence blanche sur le béton, sol détrempé autour de la maison. Une inspection par caméra HD confirme l'état exact sans excavation." ) ),
+            array( '@type' => 'Question', 'name' => "Combien coûte l'installation d'un drain français ?",           'acceptedAnswer' => array( '@type' => 'Answer', 'text' => "À partir de 160 \$/pi.lin. pour une installation complète incluant excavation, tuyau perforé triple paroi, géotextile, pierre drainante, raccordement et remblayage. Le coût varie selon la superficie, l'accessibilité et le type de sol." ) ),
+            array( '@type' => 'Question', 'name' => "Quelle est la durée des travaux pour un drain français ?",      'acceptedAnswer' => array( '@type' => 'Answer', 'text' => "2 à 5 jours ouvrables pour une maison unifamiliale standard. L'équipe protège votre terrain et remet tout en état à la fin du chantier." ) ),
+            array( '@type' => 'Question', 'name' => "Peut-on réparer un drain français sans excavation ?",           'acceptedAnswer' => array( '@type' => 'Answer', 'text' => "Dans certains cas, un drain obstrué peut être nettoyé par hydro-jet. Si le drain est effondré, fracturé ou en argile (maisons d'avant 1980), l'excavation et le remplacement complet sont nécessaires." ) ),
+            array( '@type' => 'Question', 'name' => "La garantie de drain français est-elle transférable ?",         'acceptedAnswer' => array( '@type' => 'Answer', 'text' => "Oui. Notre garantie de 25 ans est transférable au nouveau propriétaire sur avis écrit — valeur ajoutée réelle lors de la revente." ) ),
+            array( '@type' => 'Question', 'name' => "Faites-vous une inspection avant les travaux de drain ?",       'acceptedAnswer' => array( '@type' => 'Answer', 'text' => "Absolument. Nous incluons une inspection par caméra HD avant tout travail. Le rapport vidéo vous est remis pour que vous compreniez exactement pourquoi les travaux sont recommandés." ) ),
+            array( '@type' => 'Question', 'name' => "Installez-vous des drains français en hiver au Québec ?",      'acceptedAnswer' => array( '@type' => 'Answer', 'text' => "Oui, nous intervenons à l'année avec l'équipement adapté aux conditions hivernales québécoises." ) ),
+        ),
+    );
+
+    $service = array(
+        '@context'    => 'https://schema.org',
+        '@type'       => 'Service',
+        'name'        => 'Installation et réparation de drain français',
+        'serviceType' => 'Drain français — drainage de fondation',
+        'description' => "Installation et réparation de drain français à Montréal, Laval et Rive-Nord. Tuyau perforé triple paroi, géotextile anti-racines, inspection caméra HD incluse. Garantie 25 ans transférable. Certifié RBQ 5863-7364-01.",
+        'provider'    => array(
+            '@type'     => 'HomeAndConstructionBusiness',
+            'name'      => 'Fissure et Drain XT',
+            'telephone' => '+15147307107',
+            'url'       => 'https://fissuredrainxt.com',
+        ),
+        'areaServed'  => array(
+            array( '@type' => 'City', 'name' => 'Montréal'  ),
+            array( '@type' => 'City', 'name' => 'Laval'     ),
+            array( '@type' => 'City', 'name' => 'Rive-Nord' ),
+        ),
+        'offers' => array(
+            '@type'              => 'Offer',
+            'priceCurrency'      => 'CAD',
+            'price'              => '160',
+            'priceSpecification' => array(
+                '@type'         => 'UnitPriceSpecification',
+                'price'         => '160',
+                'priceCurrency' => 'CAD',
+                'unitText'      => 'pi.lin.',
+                'description'   => 'Prix de départ par pied linéaire — excavation, matériaux, pose et remblayage inclus',
+            ),
+        ),
+        'warranty'      => 'Garantie 25 ans transférable au nouveau propriétaire',
+        'hasCredential' => 'RBQ 5863-7364-01',
+    );
+
+    echo '<script type="application/ld+json">' . wp_json_encode( $faq,     JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . '</script>' . "\n";
+    echo '<script type="application/ld+json">' . wp_json_encode( $service, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . '</script>' . "\n";
+}
+add_action( 'wp_head', 'fdxt_drain_seo_schemas' );
+
 get_header();
 ?>
 
@@ -122,7 +176,7 @@ get_header();
         <div class="hpill"><div class="hpulse" style="animation-delay:.6s"></div><?php esc_html_e( 'Garantie 25 ans', 'fissuredrainxt' ); ?><sup style="font-size:9px;vertical-align:super;color:rgba(245,168,0,.75)">*</sup></div>
         <div class="hpill"><div class="hpulse" style="animation-delay:1.2s"></div><?php esc_html_e( 'À partir de 160 $/pi.lin.', 'fissuredrainxt' ); ?></div>
       </div>
-      <h1><?php esc_html_e( 'Drain français —', 'fissuredrainxt' ); ?><br><span><?php esc_html_e( 'installation &', 'fissuredrainxt' ); ?></span><br><em><?php esc_html_e( 'réparation', 'fissuredrainxt' ); ?></em></h1>
+      <h1><?php esc_html_e( 'Drain français —', 'fissuredrainxt' ); ?><br><span><?php esc_html_e( 'installation &', 'fissuredrainxt' ); ?></span> <em><?php esc_html_e( 'réparation', 'fissuredrainxt' ); ?></em></h1>
       <div class="hdash"></div>
       <p class="hsub"><?php esc_html_e( "Le drain français est votre première ligne de défense contre les infiltrations d'eau. Défectueux ou absent, les conséquences sont coûteuses. Nos spécialistes certifiés RBQ installent ou réparent votre drain aux normes les plus strictes du Québec.", 'fissuredrainxt' ); ?></p>
     </div>
